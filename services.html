@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - China University Admissions</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            /* Using a static, subtle background image for this page */
+            background-image: url('https://images.unsplash.com/photo-1576495199011-bde074e58334?q=80&w=1974&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* --- Glassmorphism Effect for Cards and Buttons --- */
+        .glass-card {
+            background: rgba(10, 10, 20, 0.7); /* Darker glass for better readability */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem; /* More pronounced rounded corners */
+        }
+        
+        .glass-button {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Custom Scrollbar for a more modern look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.5);
+        }
+
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Back to Home Button -->
+    <header class="fixed top-4 left-4 z-50">
+        <a href="index.html" class="glass-button rounded-full p-3 text-white flex items-center justify-center shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform -scale-x-100">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+        </a>
+    </header>
+
+    <main class="container mx-auto px-4 py-24 sm:py-32">
+        <div class="glass-card max-w-4xl mx-auto p-8 md:p-12 shadow-2xl">
+            
+            <!-- Post Title -->
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 border-b-2 border-cyan-400/30 pb-4">
+                تحصیل دندانپزشکی در چین
+            </h1>
+            <p class="text-lg text-cyan-300 mb-8">دروازه‌ای به سوی آینده‌ای درخشان و حرفه‌ای</p>
+            
+            <!-- Post Content -->
+            <div class="space-y-6 text-base md:text-lg leading-relaxed text-gray-300">
+                <p>
+                    تحصیل در رشته دندانپزشکی در چین یک فرصت استثنایی برای دانشجویان بین‌المللی است که به دنبال آموزش با کیفیت جهانی، امکانات پیشرفته و هزینه‌های مقرون‌به‌صرفه هستند. دانشگاه‌های چین با ارائه دوره‌هایی کاملاً به زبان انگلیسی، مسیر را برای موفقیت در عرصه بین‌المللی هموار کرده‌اند.
+                </p>
+                <p>
+                    برنامه‌های درسی مدرن، کلینیک‌های مجهز و تمرکز بر تحقیقات علمی، فارغ‌التحصیلان را برای مواجهه با چالش‌های دنیای واقعی آماده می‌سازد. مدرک دندانپزشکی از دانشگاه‌های معتبر چین توسط سازمان بهداشت جهانی (WHO) و بسیاری از شوراهای پزشکی در سراسر جهان به رسمیت شناخته می‌شود.
+                </p>
+            </div>
+            
+            <!-- University Spotlight Section -->
+            <div class="mt-12 pt-8 border-t-2 border-cyan-400/30">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">معرفی دانشگاه: دانشگاه پزشکی پایتخت (CMU)</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-right">
+                    <div class="bg-black/20 p-5 rounded-xl border border-white/10">
+                        <h3 class="font-bold text-cyan-300 mb-2">مکان</h3>
+                        <p>پکن، چین</p>
+                    </div>
+                    <div class="bg-black/20 p-5 rounded-xl border border-white/10">
+                        <h3 class="font-bold text-cyan-300 mb-2">زبان تحصیل</h3>
+                        <p>انگلیسی</p>
+                    </div>
+                    <div class="bg-black/20 p-5 rounded-xl border border-white/10">
+                        <h3 class="font-bold text-cyan-300 mb-2">طول دوره</h3>
+                        <p>۶ سال (شامل دوره کارآموزی)</p>
+                    </div>
+                    <div class="bg-black/20 p-5 rounded-xl border border-white/10">
+                        <h3 class="font-bold text-cyan-300 mb-2">اعتبار مدرک</h3>
+                        <p>تایید شده توسط WHO و ECFMG</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                     <a href="#" class="glass-button inline-block rounded-full px-10 py-3 text-lg tracking-wider text-white shadow-lg">
+                        مشاوره و ثبت‌نام
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
