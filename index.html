@@ -15,7 +15,6 @@
     <style>
         /* Applying custom fonts */
         body {
-            /* Since the main text is now English/Chinese, we set a neutral base font. */
             font-family: sans-serif;
             overflow: hidden; /* Prevents scrollbars from appearing due to animations */
         }
@@ -23,7 +22,21 @@
             font-family: 'Noto Sans SC', sans-serif;
         }
         .font-english {
-            font-family: 'Vazirmatn', sans-serif; /* Using Vazirmatn for its clean look in English too */
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        /* --- Glassmorphism Effect for Buttons --- */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: background 0.3s ease, border 0.3s ease, transform 0.3s ease;
+        }
+        .glass-effect:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px); /* Slight lift on hover */
         }
 
         /* --- Animations --- */
@@ -45,9 +58,7 @@
             opacity: 0;
             animation: fadeInSlideUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
-        .bg-image-animate {
-            /* The animation is now applied via media query below for performance on mobile */
-        }
+        .bg-image-animate {}
 
         /* --- Classic Graphic Elements (Now Responsive) --- */
         .decorative-line::before,
@@ -69,7 +80,6 @@
             .decorative-line::after {
                 width: 80px;
             }
-            /* Apply Ken Burns effect only on larger screens for better performance on mobile */
             .bg-image-animate {
                 animation: kenBurnsEffect 20s ease-out forwards;
             }
@@ -79,7 +89,8 @@
         .delay-300 { animation-delay: 300ms; }
         .delay-600 { animation-delay: 600ms; }
         .delay-900 { animation-delay: 900ms; }
-        .delay-1200 { animation-delay: 1200ms; } /* Delay for social icons */
+        .delay-1200 { animation-delay: 1200ms; } /* Delay for main button */
+        .delay-1500 { animation-delay: 1500ms; } /* Delay for social icons */
     </style>
 </head>
 <body class="bg-black">
@@ -111,19 +122,26 @@
                 </p>
             </div>
 
+            <!-- Call to Action Button -->
+            <div class="animate-intro delay-1200 mt-10">
+                <a href="services.html" class="glass-effect font-english rounded-full px-8 py-3 text-base sm:text-lg tracking-widest text-white/90 hover:text-white shadow-lg">
+                    Explore Services
+                </a>
+            </div>
+
             <!-- Social Media Icons -->
-            <div class="animate-intro delay-1200 mt-8 flex space-x-6">
-                <!-- Instagram Icon Link (Opens app directly) -->
-                <a href="instagram://user?username=mehrshadrokni" target="_blank" rel="noopener noreferrer" class="text-white/70 hover:text-white transition-colors duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="animate-intro delay-1500 mt-8 flex space-x-4">
+                <!-- Instagram Icon Link -->
+                <a href="instagram://user?username=mehrshadrokni" target="_blank" rel="noopener noreferrer" class="glass-effect rounded-full p-3 text-white/70 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                     </svg>
                 </a>
-                <!-- Telegram Icon Link (Opens app directly) -->
-                <a href="tg://resolve?domain=mehrshaw" target="_blank" rel="noopener noreferrer" class="text-white/70 hover:text-white transition-colors duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Telegram Icon Link -->
+                <a href="tg://resolve?domain=mehrshaw" target="_blank" rel="noopener noreferrer" class="glass-effect rounded-full p-3 text-white/70 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path>
                     </svg>
                 </a>
