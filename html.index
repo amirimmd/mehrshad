@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مهرشاد رکنی - اخذ پذیرش در چین</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font for Chinese characters to ensure they display correctly -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Applying the Chinese font to elements that need it */
+        .font-chinese {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- 
+      دستورالعمل برای شما:
+      1. این فایل HTML را دانلود کنید.
+      2. عکسی که آپلود کردید (Picsart_25-09-06_23-20-56-102.jpg) را در همان پوشه‌ای که این فایل HTML قرار دارد، کپی کنید.
+      3. پوشه را در Vercel آپلود کنید تا سایت شما مستقر (Deploy) شود.
+    -->
+
+    <main class="relative w-full h-screen bg-cover bg-center flex items-center justify-center">
+        <!-- Background Image Container -->
+        <div class="absolute inset-0 z-0">
+            <img src="Picsart_25-09-06_23-20-56-102.jpg" alt="Background Image" class="w-full h-full object-cover">
+            <!-- Dark overlay to make the text more readable -->
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+        </div>
+
+        <!-- Content centered on the page -->
+        <div class="relative z-10 text-center text-white p-4">
+            
+            <!-- Name in Chinese characters -->
+            <h1 class="font-chinese text-5xl md:text-7xl font-bold" style="text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);">
+                梅赫沙德 · 罗克尼
+            </h1>
+            
+        </div>
+
+        <!-- Text at the bottom -->
+        <div class="absolute bottom-8 left-0 right-0 z-10 text-center text-white p-4">
+            <p class="text-xl md:text-2xl font-medium" style="text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);">
+                اخذ پذیرش در چین
+            </p>
+        </div>
+
+    </main>
+
+</body>
+</html>
 
