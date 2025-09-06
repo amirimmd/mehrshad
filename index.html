@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,11 +15,15 @@
     <style>
         /* Applying custom fonts */
         body {
-            font-family: 'Vazirmatn', sans-serif;
+            /* Since the main text is now English/Chinese, we set a neutral base font. */
+            font-family: sans-serif;
             overflow: hidden; /* Prevents scrollbars from appearing due to animations */
         }
         .font-chinese {
             font-family: 'Noto Sans SC', sans-serif;
+        }
+        .font-english {
+            font-family: 'Vazirmatn', sans-serif; /* Using Vazirmatn for its clean look in English too */
         }
 
         /* --- Animations --- */
@@ -42,7 +46,7 @@
             animation: fadeInSlideUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
         .bg-image-animate {
-            animation: kenBurnsEffect 20s ease-out forwards;
+            /* The animation is now applied via media query below for performance on mobile */
         }
 
         /* --- Classic Graphic Elements (Now Responsive) --- */
@@ -59,11 +63,15 @@
             animation: scaleX 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 800ms forwards;
         }
 
-        /* On screens 768px and wider (tablets and up), make the lines longer */
+        /* On screens 768px and wider (tablets and up), apply richer effects */
         @media (min-width: 768px) {
             .decorative-line::before,
             .decorative-line::after {
                 width: 80px;
+            }
+            /* Apply Ken Burns effect only on larger screens for better performance on mobile */
+            .bg-image-animate {
+                animation: kenBurnsEffect 20s ease-out forwards;
             }
         }
 
@@ -71,6 +79,7 @@
         .delay-300 { animation-delay: 300ms; }
         .delay-600 { animation-delay: 600ms; }
         .delay-900 { animation-delay: 900ms; }
+        .delay-1200 { animation-delay: 1200ms; } /* Delay for social icons */
     </style>
 </head>
 <body class="bg-black">
@@ -97,9 +106,27 @@
             
             <!-- Subtitle with responsive font sizes and letter spacing -->
             <div class="animate-intro delay-900">
-                <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-widest md:tracking-[0.2em]" style="text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);">
+                <p class="font-english text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-widest md:tracking-[0.2em]" style="text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);">
                     China University Admissions
                 </p>
+            </div>
+
+            <!-- Social Media Icons -->
+            <div class="animate-intro delay-1200 mt-8 flex space-x-6">
+                <!-- Instagram Icon Link -->
+                <a href="https://www.instagram.com/mehrshadrokni" target="_blank" rel="noopener noreferrer" class="text-white/70 hover:text-white transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <!-- Telegram Icon Link -->
+                <a href="tg://resolve?domain=mehrshaw" target="_blank" rel="noopener noreferrer" class="text-white/70 hover:text-white transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path>
+                    </svg>
+                </a>
             </div>
         </div>
 
@@ -107,5 +134,4 @@
 
 </body>
 </html>
-
 
