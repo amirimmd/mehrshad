@@ -39,10 +39,41 @@
             transform: translateY(-2px); /* Slight lift on hover */
         }
 
+        /* --- Tooltip for Price Info --- */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip-text {
+            visibility: hidden;
+            width: 220px; /* Increased width for new text */
+            background-color: rgba(0,0,0,0.8);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position above the icon */
+            left: 50%;
+            margin-left: -110px; /* Adjusted margin */
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
         /* --- Animations --- */
         @keyframes fadeInSlideUp {
             from { opacity: 0; transform: translateY(25px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn { /* A simpler fade-in for corner elements */
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         @keyframes kenBurnsEffect {
             0% { transform: scale(1.1) rotate(1deg); }
@@ -57,6 +88,10 @@
         .animate-intro {
             opacity: 0;
             animation: fadeInSlideUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        .animate-fade {
+            opacity: 0;
+            animation: fadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
         .bg-image-animate {}
 
@@ -89,8 +124,9 @@
         .delay-300 { animation-delay: 300ms; }
         .delay-600 { animation-delay: 600ms; }
         .delay-900 { animation-delay: 900ms; }
-        .delay-1200 { animation-delay: 1200ms; } /* Delay for main button */
-        .delay-1500 { animation-delay: 1500ms; } /* Delay for social icons */
+        .delay-1200 { animation-delay: 1200ms; }
+        .delay-1500 { animation-delay: 1500ms; }
+        .delay-1800 { animation-delay: 1800ms; }
     </style>
 </head>
 <body class="bg-black">
@@ -102,53 +138,112 @@
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
         </div>
 
+        <!-- Yuan Price Display -->
+        <div dir="rtl" class="animate-fade delay-1500 absolute top-4 right-4 sm:top-6 sm:right-6 z-20">
+            <div class="glass-effect rounded-full px-4 py-2 flex items-center space-x-3 shadow-lg">
+                <div class="tooltip-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle text-white/50" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.082.082-.38-.29-.071c-.293-.07-.352-.176-.288-.469l.738-3.468c.064-.293-.006-.399-.287-.47L8 9.58l-.205-.098.082-.38.29.071c.293.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.082.082-.38-.29-.071c-.293-.07-.352-.176-.288-.469L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                    </svg>
+                    <span class="tooltip-text font-english">نرخ یوان بر اساس قیمت روز دلار در بازار آزاد ایران محاسبه شده است.</span>
+                </div>
+                <span class="font-english text-sm text-white/80">نرخ یوان:</span>
+                <span id="yuan-price" class="font-english text-base font-bold text-cyan-300 min-w-[60px] text-center">...</span>
+                <span id="last-updated" class="font-english text-xs text-white/40"></span>
+            </div>
+        </div>
+
         <!-- Content Container -->
         <div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center p-4 md:p-8">
             
-            <!-- Main Title (Name in Chinese) with responsive font sizes -->
             <div class="animate-intro delay-300">
                 <h1 class="font-chinese text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-wider" style="text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);">
                     梅赫沙德 · 罗克尼
                 </h1>
             </div>
             
-            <!-- Graphic Element: Decorative Lines -->
             <div class="animate-intro delay-600 decorative-line"></div>
             
-            <!-- Subtitle with responsive font sizes and letter spacing -->
             <div class="animate-intro delay-900">
                 <p class="font-english text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-widest md:tracking-[0.2em]" style="text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);">
                     China University Admissions
                 </p>
             </div>
 
-            <!-- Call to Action Button -->
             <div class="animate-intro delay-1200 mt-10">
                 <a href="services.html" class="glass-effect font-english rounded-full px-8 py-3 text-base sm:text-lg tracking-widest text-white/90 hover:text-white shadow-lg">
                     Explore Services
                 </a>
             </div>
 
-            <!-- Social Media Icons -->
-            <div class="animate-intro delay-1500 mt-8 flex space-x-4">
-                <!-- Instagram Icon Link -->
+            <div class="animate-intro delay-1800 mt-8 flex space-x-4">
                 <a href="instagram://user?username=mehrshadrokni" target="_blank" rel="noopener noreferrer" class="glass-effect rounded-full p-3 text-white/70 hover:text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                     </svg>
                 </a>
-                <!-- Telegram Icon Link -->
                 <a href="tg://resolve?domain=mehrshaw" target="_blank" rel="noopener noreferrer" class="glass-effect rounded-full p-3 text-white/70 hover:text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path>
                     </svg>
                 </a>
             </div>
         </div>
-
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const priceElement = document.getElementById('yuan-price');
+            const lastUpdatedElement = document.getElementById('last-updated');
+            
+            // API for Iran's free market USD rate (in Toman)
+            const iranApiUrl = 'https://pini.dev/api/v1/market/prices';
+            // API for international USD to CNY rate
+            const internationalApiUrl = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json';
+
+            try {
+                // Fetch both APIs at the same time for better performance
+                const [iranResponse, internationalResponse] = await Promise.all([
+                    fetch(iranApiUrl),
+                    fetch(internationalApiUrl)
+                ]);
+
+                if (!iranResponse.ok || !internationalResponse.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const iranData = await iranResponse.json();
+                const internationalData = await internationalResponse.json();
+
+                // Extract rates
+                const usdToToman = iranData.currencies.usd.price;
+                const usdToCny = internationalData.usd.cny;
+
+                // Get current local time
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const fetchTime = `${hours}:${minutes}`;
+
+                if (usdToToman && usdToCny) {
+                    // Calculate Yuan to Toman rate
+                    const yuanToToman = usdToToman / usdToCny;
+                    const formattedPrice = Math.round(yuanToToman).toLocaleString('fa-IR');
+                    priceElement.textContent = `${formattedPrice} تومان`;
+                    lastUpdatedElement.textContent = `(ساعت: ${fetchTime})`;
+                } else {
+                    priceElement.textContent = 'N/A';
+                }
+
+            } catch (error) {
+                console.error('Failed to fetch currency prices:', error);
+                priceElement.textContent = 'خطا';
+            }
+        });
+    </script>
 
 </body>
 </html>
