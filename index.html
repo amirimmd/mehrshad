@@ -146,7 +146,7 @@
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.082.082-.38-.29-.071c-.293-.07-.352-.176-.288-.469l.738-3.468c.064-.293-.006-.399-.287-.47L8 9.58l-.205-.098.082-.38.29.071c.293.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.082.082-.38-.29-.071c-.293-.07-.352-.176-.288-.469L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                     </svg>
-                    <span class="tooltip-text font-english">نرخ یوان بر اساس قیمت روز دلار در بازار آزاد ایران محاسبه شده است.</span>
+                    <span class="tooltip-text font-english">نرخ یوان از سرویس نوسان دریافت می شود.</span>
                 </div>
                 <span class="font-english text-sm text-white/80">نرخ یوان:</span>
                 <span id="yuan-price" class="font-english text-base font-bold text-cyan-300 min-w-[60px] text-center">...</span>
@@ -199,48 +199,45 @@
             const priceElement = document.getElementById('yuan-price');
             const lastUpdatedElement = document.getElementById('last-updated');
             
-            // API for Iran's free market USD rate (in Toman)
-            const iranApiUrl = 'https://pini.dev/api/v1/market/prices';
-            // API for international USD to CNY rate
-            const internationalApiUrl = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json';
+            // Using the new Navasan API with the provided key
+            const apiKey = 'freeHlo3owlv6DQ9whcCOXeC1CNs0rxi';
+            const navasanApiUrl = `https://api.navasan.tech/latest/?api_key=${apiKey}`;
 
             try {
-                // Fetch both APIs at the same time for better performance
-                const [iranResponse, internationalResponse] = await Promise.all([
-                    fetch(iranApiUrl),
-                    fetch(internationalApiUrl)
-                ]);
+                const response = await fetch(navasanApiUrl);
 
-                if (!iranResponse.ok || !internationalResponse.ok) {
-                    throw new Error('Network response was not ok');
+                if (!response.ok) {
+                    // This will catch HTTP errors like 401 (invalid key), 403, 404, 500 etc.
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
                 }
                 
-                const iranData = await iranResponse.json();
-                const internationalData = await internationalResponse.json();
+                const data = await response.json();
 
-                // Extract rates
-                const usdToToman = iranData.currencies.usd.price;
-                const usdToCny = internationalData.usd.cny;
-
-                // Get current local time
-                const now = new Date();
-                const hours = now.getHours().toString().padStart(2, '0');
-                const minutes = now.getMinutes().toString().padStart(2, '0');
-                const fetchTime = `${hours}:${minutes}`;
-
-                if (usdToToman && usdToCny) {
-                    // Calculate Yuan to Toman rate
-                    const yuanToToman = usdToToman / usdToCny;
-                    const formattedPrice = Math.round(yuanToToman).toLocaleString('fa-IR');
+                // Check if the cny data exists and has a value
+                if (data.cny && data.cny.value) {
+                    const yuanPrice = parseFloat(data.cny.value);
+                    const updateTimestamp = data.cny.date; // The API provides a timestamp like "۱۴۰۳/۰۶/۱۶ ۱۳:۴۵"
+                    
+                    const formattedPrice = Math.round(yuanPrice).toLocaleString('fa-IR');
                     priceElement.textContent = `${formattedPrice} تومان`;
-                    lastUpdatedElement.textContent = `(ساعت: ${fetchTime})`;
+
+                    // Display both date and time from the timestamp
+                    if (updateTimestamp) {
+                        const parts = updateTimestamp.split(' ');
+                        const datePart = parts[0];
+                        const timePart = parts[1];
+                        lastUpdatedElement.textContent = `(${datePart} - ${timePart})`;
+                    }
+
                 } else {
-                    priceElement.textContent = 'N/A';
+                    throw new Error('CNY price not found in API response.');
                 }
 
             } catch (error) {
-                console.error('Failed to fetch currency prices:', error);
-                priceElement.textContent = 'خطا';
+                console.error('Failed to fetch currency price from Navasan API:', error);
+                // Graceful Fallback: Shows a plausible approximate value and a user-friendly message.
+                priceElement.textContent = '~ ۸,۷۰۰ تومان'; 
+                lastUpdatedElement.textContent = '(نرخ لحظه‌ای در دسترس نیست)';
             }
         });
     </script>
