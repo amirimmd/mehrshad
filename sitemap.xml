@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<urlset xmlns="[لینک مشکوک حذف شد]">
-<url>
-<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/</loc>
-<lastmod>2024-05-23</lastmod>
-<priority>1.00</priority>
-</url>
-<url>
-<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/services.html</loc>
-<lastmod>2024-05-23</lastmod>
-<priority>0.80</priority>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://mehrshadrokni.ir/</loc>
+    <lastmod>2025-09-08</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://mehrshadrokni.ir/services.html</loc>
+    <lastmod>2025-09-08</lastmod>
+    <priority>0.80</priority>
+  </url>
 </urlset>
