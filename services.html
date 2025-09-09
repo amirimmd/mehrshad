@@ -16,7 +16,7 @@
     <!-- Google Fonts: Vazirmatn -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         /* Applying custom fonts and base styles */
@@ -32,6 +32,22 @@
             -webkit-backdrop-filter: blur(16px); /* For Safari */
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+        
+        /* New darker glass effect for university cards */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5); /* Even darker slate bg */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .glass-card:hover {
+            background: rgba(51, 65, 85, 0.7);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px); /* Lift effect */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
 
         /* --- Animations --- */
         @keyframes fadeInUp {
@@ -99,39 +115,43 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
             
             <!-- Medical Universities Section -->
-            <section class="glass-effect rounded-2xl p-6 md:p-8 animate-on-load delay-300">
-                <h2 class="text-2xl font-bold text-cyan-300 mb-6">دانشگاه‌های پزشکی</h2>
-                <ul class="space-y-4">
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه پزشکی پکن (Peking University Health Science Center)</span></li>
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه پزشکی شانگهای (Shanghai Jiao Tong University School of Medicine)</span></li>
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه پزشکی فوجیان (Fujian Medical University)</span></li>
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه پزشکی هاربین (Harbin Medical University)</span></li>
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه پزشکی جیلین (Jilin University School of Medicine)</span></li>
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه پزشکی نانجینگ (Nanjing Medical University)</span></li>
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه پزشکی چونگ‌کینگ (Chongqing Medical University)</span></li>
-                </ul>
+            <section class="animate-on-load delay-300">
+                <h2 class="text-2xl font-bold text-cyan-300 mb-6 text-center">پزشکی</h2>
+                <div class="space-y-4">
+                    <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی پکن</h3><p class="text-sm text-slate-400 mt-1">Peking University Health Science Center</p></div>
+                    <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی شانگهای</h3><p class="text-sm text-slate-400 mt-1">Shanghai Jiao Tong University School of Medicine</p></div>
+                    <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی فوجیان</h3><p class="text-sm text-slate-400 mt-1">Fujian Medical University</p></div>
+                    <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی هاربین</h3><p class="text-sm text-slate-400 mt-1">Harbin Medical University</p></div>
+                    <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی جیلین</h3><p class="text-sm text-slate-400 mt-1">Jilin University School of Medicine</p></div>
+                    <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی نانجینگ</h3><p class="text-sm text-slate-400 mt-1">Nanjing Medical University</p></div>
+                    <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی چونگ‌کینگ</h3><p class="text-sm text-slate-400 mt-1">Chongqing Medical University</p></div>
+                    <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی دالیان</h3><p class="text-sm text-slate-400 mt-1">Dalian Medical University</p></div>
+                </div>
             </section>
 
-            <!-- Dentistry Universities Section -->
-            <section class="glass-effect rounded-2xl p-6 md:p-8 animate-on-load delay-500">
-                <h2 class="text-2xl font-bold text-cyan-300 mb-6">دانشگاه‌های دندان‌پزشکی</h2>
-                <ul class="space-y-4">
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه دندان‌پزشکی پکن (Peking University School of Stomatology)</span></li>
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه دندان‌پزشکی شانگهای (Shanghai Jiao Tong University School of Stomatology)</span></li>
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه دندان‌پزشکی نانجینگ (Nanjing Medical University School of Stomatology)</span></li>
-                </ul>
-            </section>
+            <!-- Dentistry & Pharmacy Section -->
+            <div class="lg:col-span-2 flex flex-col gap-8 md:gap-12">
+                <!-- Dentistry Universities Section -->
+                <section class="animate-on-load delay-500">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-6 text-center">دندان‌پزشکی</h2>
+                    <div class="space-y-4">
+                        <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی پکن</h3><p class="text-sm text-slate-400 mt-1">Peking University School of Stomatology</p></div>
+                        <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی شانگهای</h3><p class="text-sm text-slate-400 mt-1">Shanghai Jiao Tong University School of Stomatology</p></div>
+                        <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی نانجینگ</h3><p class="text-sm text-slate-400 mt-1">Nanjing Medical University School of Stomatology</p></div>
+                    </div>
+                </section>
 
-            <!-- Pharmacy Universities Section -->
-            <section class="glass-effect rounded-2xl p-6 md:p-8 animate-on-load delay-700">
-                <h2 class="text-2xl font-bold text-cyan-300 mb-6">دانشگاه‌های داروسازی</h2>
-                <ul class="space-y-4">
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه داروسازی پکن (Peking University School of Pharmaceutical Sciences)</span></li>
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه داروسازی شانگهای (Shanghai Jiao Tong University School of Pharmacy)</span></li>
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه طب سنتی چینی نانجینگ (Nanjing University of Chinese Medicine)</span></li>
-                    <li class="flex items-start"><span class="ml-3 mt-1 text-cyan-400">&#9679;</span> <span>دانشگاه داروسازی گوانگ‌دونگ (Guangdong Pharmaceutical University)</span></li>
-                </ul>
-            </section>
+                <!-- Pharmacy Universities Section -->
+                <section class="animate-on-load delay-700">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-6 text-center">داروسازی</h2>
+                    <div class="space-y-4">
+                        <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه داروسازی پکن</h3><p class="text-sm text-slate-400 mt-1">Peking University School of Pharmaceutical Sciences</p></div>
+                        <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه داروسازی شانگهای</h3><p class="text-sm text-slate-400 mt-1">Shanghai Jiao Tong University School of Pharmacy</p></div>
+                        <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه طب سنتی چینی نانجینگ</h3><p class="text-sm text-slate-400 mt-1">Nanjing University of Chinese Medicine</p></div>
+                        <div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه داروسازی گوانگ‌دونگ</h3><p class="text-sm text-slate-400 mt-1">Guangdong Pharmaceutical University</p></div>
+                    </div>
+                </section>
+            </div>
 
         </div>
     </main>
