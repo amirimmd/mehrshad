@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>پذیرش دندانپزشکی دانشگاه دالیان | تحصیل در چین</title>
-    <meta name="description" content="شرایط کامل پذیرش، مدارک مورد نیاز و هزینه‌های تحصیل در رشته دندانپزشکی دانشگاه دالیان چین برای دانشجویان ایرانی.">
+    <title>پذیرش دندانپزشکی دانشگاه دالیان | گالری تصاویر و شرایط</title>
+    <meta name="description" content="شرایط کامل پذیرش، مدارک مورد نیاز، هزینه‌ها و گالری تصاویر دانشگاه دالیان چین برای رشته دندانپزشکی.">
     <meta name="keywords" content="دانشگاه پزشکی دالیان, Dalian Medical University, تحصیل دندانپزشکی در چین, پذیرش دندانپزشکی چین, هزینه تحصیل در چین, مدارک لازم برای پذیرش چین">
     <meta name="author" content="Mehrshad Rokni">
 
@@ -16,12 +16,13 @@
     <!-- Google Fonts: Vazirmatn -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
             overflow-x: hidden;
+            background-color: #020617; /* Dark blue background */
         }
         .glass-effect {
             background: rgba(15, 23, 42, 0.6);
@@ -36,8 +37,13 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
-        .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.25);
+        .gallery-image-container {
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .gallery-image-container:hover {
+            transform: scale(1.03);
+            z-index: 10;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
@@ -53,6 +59,7 @@
         .delay-400 { animation-delay: 400ms; }
         .delay-500 { animation-delay: 500ms; }
         .delay-600 { animation-delay: 600ms; }
+        .delay-700 { animation-delay: 700ms; }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
         ::-webkit-scrollbar-thumb { background-color: rgba(255,255,255,0.2); border-radius: 10px; border: 2px solid transparent; background-clip: content-box; }
@@ -61,64 +68,73 @@
 </head>
 <body class="bg-slate-900 text-slate-200">
 
-    <!-- Background Image Container -->
-    <div class="fixed inset-0 z-0 h-screen">
-        <img src="3535.jpg" alt="Background" class="w-full h-full object-cover object-center opacity-20">
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/80 to-slate-900"></div>
-    </div>
-
     <!-- Floating Back to Services Button -->
     <a href="services.html" title="بازگشت به لیست دانشگاه‌ها" class="fixed top-5 left-5 z-50 glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
             <path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path>
         </svg>
     </a>
 
-    <!-- Main Content -->
-    <main class="relative z-10 container mx-auto px-4 py-16 sm:py-24">
-        
-        <header class="text-center mb-12 sm:mb-16">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight animate-on-load delay-100">پذیرش دندانپزشکی: دانشگاه دالیان</h1>
-            <p class="mt-4 text-xl text-cyan-300 max-w-2xl mx-auto animate-on-load delay-200">Dalian Medical University (DMU)</p>
-        </header>
+    <!-- Hero Section -->
+    <header class="relative h-[60vh] min-h-[400px] flex items-center justify-center text-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://raw.githubusercontent.com/amirimmd/mehrshad/main/images/universities/dalian-medical/1.jpg" alt="نمای اصلی دانشگاه دالیان" class="w-full h-full object-cover object-center scale-105">
+            <div class="absolute inset-0 bg-black/60"></div>
+        </div>
+        <div class="relative z-10 px-4">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight animate-on-load delay-100" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">دانشگاه پزشکی دالیان</h1>
+            <p class="mt-4 text-xl sm:text-2xl text-cyan-300 max-w-2xl mx-auto animate-on-load delay-200" style="text-shadow: 0 1px 5px rgba(0,0,0,0.5);">Dalian Medical University (DMU)</p>
+        </div>
+    </header>
 
+    <!-- Main Content -->
+    <main class="relative z-10 container mx-auto px-4 py-16 sm:py-24 -mt-24">
         <div class="space-y-12">
             
-            <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-300">
-                 <h2 class="text-2xl font-bold text-cyan-300 mb-4">معرفی دوره</h2>
+            <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-300 shadow-2xl">
+                 <h2 class="text-2xl font-bold text-cyan-300 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>معرفی دوره دندانپزشکی</h2>
                 <p class="text-slate-300 leading-relaxed">
                     دانشگاه پزشکی دالیان یکی از بهترین گزینه‌ها برای تحصیل در رشته دندانپزشکی به زبان انگلیسی در چین است. این دوره با تمرکز بر استانداردهای بین‌المللی، دانشجویان را برای ورود به بازار کار جهانی آماده می‌کند. در ادامه، جزئیات کامل شرایط، مدارک و هزینه‌های مربوط به این دوره ارائه شده است.
                 </p>
             </section>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
-                <div class="space-y-8">
-                    <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-400">
-                        <h2 class="text-2xl font-bold text-cyan-300 mb-6">مشخصات دوره</h2>
-                        <ul class="space-y-4 text-slate-300">
-                            <li class="flex justify-between items-center"><span>شهریه سالانه:</span><strong class="text-white font-semibold">۴۵,۰۰۰ یوان</strong></li>
-                            <li class="flex justify-between items-center"><span>مدت زمان دوره:</span><strong class="text-white font-semibold">۵ سال</strong></li>
-                            <li class="flex justify-between items-center"><span>زبان آموزش:</span><strong class="text-white font-semibold">انگلیسی</strong></li>
-                        </ul>
-                    </section>
-
-                    <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-500">
-                        <h2 class="text-2xl font-bold text-cyan-300 mb-6">هزینه‌های پذیرش و خدمات</h2>
-                        <ul class="space-y-4 text-slate-300">
-                            <li class="flex justify-between items-center"><span>اپلیکیشن فی (Application Fee):</span><strong class="text-white font-semibold">$۲۵۰</strong></li>
-                            <li class="flex justify-between items-center"><span>پیش‌پرداخت اولیه:</span><strong class="text-white font-semibold">$۳۰۰ - $۵۰۰</strong></li>
-                            <li class="flex justify-between items-center"><span>هزینه کل پرونده:</span><strong class="text-white font-semibold">$۱۵۰۰ - $۲۰۰۰</strong></li>
-                        </ul>
+            
+            <!-- Details & Requirements Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <!-- Main Details on the Left -->
+                <div class="lg:col-span-3 space-y-8">
+                     <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-400 h-full">
+                        <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>مدارک مورد نیاز</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-slate-300">
+                            <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>ریزنمرات ۳ سال آخر دبیرستان</span></div>
+                            <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>مدرک دیپلم (تجربی، انسانی یا ریاضی)</span></div>
+                            <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>نامه عدم سوء پیشینه</span></div>
+                            <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>اسکن تمام صفحات پاسپورت</span></div>
+                            <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>عکس پرسنلی با زمینه سفید</span></div>
+                            <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>فرم پزشکی تایید سلامت (مهر شده)</span></div>
+                            <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>تمکن مالی</span></div>
+                            <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>نوتارایز (Notarize) سفارت چین</span></div>
+                        </div>
                         <p class="text-xs text-slate-400 mt-6 pt-4 border-t border-slate-700">
-                            <strong>نکته:</strong> در صورت کنسلی از سمت موسسه، کلیه هزینه‌های دریافتی برگشت داده خواهد شد.
+                            <strong>خدمات تکمیلی:</strong> ترجمه رسمی کلیه مدارک با مهر دادگستری و امور خارجه و همچنین کمک در ارائه تمکن مالی توسط موسسه با هزینه جداگانه انجام می‌شود.
                         </p>
                     </section>
                 </div>
-
-                <div class="space-y-8">
-                    <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-400">
-                        <h2 class="text-2xl font-bold text-cyan-300 mb-6">شرایط اصلی پذیرش</h2>
+                <!-- Sidebar info on the right -->
+                <div class="lg:col-span-2 space-y-8">
+                     <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-500">
+                        <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>مشخصات و هزینه‌ها</h2>
+                        <ul class="space-y-4 text-slate-300 border-b border-slate-700 pb-4">
+                            <li class="flex justify-between items-center"><span>شهریه سالانه:</span><strong class="text-white font-semibold">۴۵,۰۰۰ یوان</strong></li>
+                            <li class="flex justify-between items-center"><span>مدت زمان دوره:</span><strong class="text-white font-semibold">۵ سال</strong></li>
+                        </ul>
+                        <ul class="space-y-4 text-slate-300 pt-4">
+                             <li class="flex justify-between items-center"><span>اپلیکیشن فی:</span><strong class="text-white font-semibold">$۲۵۰</strong></li>
+                            <li class="flex justify-between items-center"><span>پیش‌پرداخت:</span><strong class="text-white font-semibold">$۳۰۰ - $۵۰۰</strong></li>
+                            <li class="flex justify-between items-center"><span>هزینه کل پرونده:</span><strong class="text-white font-semibold">$۱۵۰۰ - $۲۰۰۰</strong></li>
+                        </ul>
+                    </section>
+                    <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-600">
+                        <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"></path></svg>شرایط پذیرش</h2>
                         <ul class="space-y-3 text-slate-300">
                             <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>معدل کل دیپلم بالای ۱۸</span></li>
                             <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>متولدین سال ۲۰۰۱ به بعد</span></li>
@@ -128,23 +144,27 @@
                 </div>
             </div>
 
-            <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-600">
-                <h2 class="text-2xl font-bold text-cyan-300 mb-6">مدارک مورد نیاز</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-slate-300">
-                    <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>ریزنمرات ۳ سال آخر دبیرستان</span></div>
-                    <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>مدرک دیپلم (تجربی، انسانی یا ریاضی)</span></div>
-                    <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>نامه عدم سوء پیشینه</span></div>
-                    <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>اسکن تمام صفحات پاسپورت</span></div>
-                    <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>عکس پرسنلی با زمینه سفید</span></div>
-                    <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>فرم پزشکی تایید سلامت (مهر شده)</span></div>
-                    <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>تمکن مالی</span></div>
-                    <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>نوتارایز (Notarize) سفارت چین در ایران</span></div>
+            <!-- Image Gallery Section -->
+            <section class="animate-on-load delay-700 pt-8">
+                <h2 class="text-3xl font-bold text-cyan-300 mb-8 text-center flex items-center justify-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>محیط دانشگاه و امکانات</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    <div class="rounded-xl overflow-hidden glass-card p-2 md:col-span-2 md:row-span-2 gallery-image-container">
+                        <img src="https://raw.githubusercontent.com/amirimmd/mehrshad/main/images/universities/dalian-medical/1.jpg" alt="نمای دانشگاه دالیان" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="rounded-xl overflow-hidden glass-card p-2 gallery-image-container">
+                         <img src="https://raw.githubusercontent.com/amirimmd/mehrshad/main/images/universities/dalian-medical/2.jpg" alt="کتابخانه دانشگاه دالیان" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="rounded-xl overflow-hidden glass-card p-2 gallery-image-container">
+                         <img src="https://raw.githubusercontent.com/amirimmd/mehrshad/main/images/universities/dalian-medical/3.jpg" alt="آزمایشگاه دانشگاه دالیان" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                     <div class="rounded-xl overflow-hidden glass-card p-2 gallery-image-container">
+                         <img src="https://raw.githubusercontent.com/amirimmd/mehrshad/main/images/universities/dalian-medical/4.jpg" alt="خوابگاه دانشجویی" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                     <div class="rounded-xl overflow-hidden glass-card p-2 gallery-image-container">
+                         <img src="https://raw.githubusercontent.com/amirimmd/mehrshad/main/images/universities/dalian-medical/5.jpg" alt="فضای ورزشی" class="w-full h-full object-cover rounded-lg">
+                    </div>
                 </div>
-                <p class="text-xs text-slate-400 mt-6 pt-4 border-t border-slate-700">
-                    <strong>خدمات تکمیلی:</strong> ترجمه رسمی کلیه مدارک با مهر دادگستری و امور خارجه و همچنین کمک در ارائه تمکن مالی توسط موسسه با هزینه جداگانه انجام می‌شود.
-                </p>
             </section>
-            
         </div>
     </main>
 
