@@ -64,6 +64,14 @@
         ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
         ::-webkit-scrollbar-thumb { background-color: rgba(255,255,255,0.2); border-radius: 10px; border: 2px solid transparent; background-clip: content-box; }
         ::-webkit-scrollbar-thumb:hover { background-color: rgba(255,255,255,0.4); }
+
+        /* Lightbox and Zoom Styles */
+        #lightbox-img {
+            transition: transform 0.3s ease;
+        }
+        .cursor-zoom-in { cursor: zoom-in; }
+        .cursor-zoom-out { cursor: zoom-out; }
+        .scale-150 { transform: scale(1.5); }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-200">
@@ -82,7 +90,7 @@
     </header>
 
     <!-- New Masonry Image Gallery -->
-    <section class="container mx-auto px-4 animate-on-load delay-300">
+    <section id="image-gallery" class="container mx-auto px-4 animate-on-load delay-300">
         <div class="columns-2 md:columns-3 lg:columns-4 gap-4 [&>img:not(:first-child)]:mt-4">
             <img src="images/universities/dalian-medical/01.jpg" alt="تصویر ۱ از دانشگاه دالیان" class="rounded-xl gallery-image">
             <img src="images/universities/dalian-medical/02.jpg" alt="تصویر ۲ از دانشگاه دالیان" class="rounded-xl gallery-image">
@@ -106,6 +114,12 @@
                 <p class="text-slate-300 leading-relaxed">
                     دانشگاه پزشکی دالیان یکی از بهترین گزینه‌ها برای تحصیل در رشته دندانپزشکی به زبان انگلیسی در چین است. این دوره با تمرکز بر استانداردهای بین‌المللی، دانشجویان را برای ورود به بازار کار جهانی آماده می‌کند. در ادامه، جزئیات کامل شرایط، مدارک و هزینه‌های مربوط به این دوره ارائه شده است.
                 </p>
+                <div class="mt-6 text-center">
+                    <a href="https://maps.app.goo.gl/8HpbpjrEFq4jWKgc8" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full glass-effect px-6 py-3 text-base text-white/90 hover:text-white shadow-lg transition-transform hover:scale-105">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        مشاهده موقعیت دانشگاه روی نقشه
+                    </a>
+                </div>
             </section>
             
             <!-- Details & Requirements Section -->
@@ -157,6 +171,74 @@
         </div>
     </main>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 z-[999] hidden items-center justify-center p-4 transition-opacity duration-300">
+        <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white text-5xl opacity-80 hover:opacity-100">&times;</button>
+        <button onclick="showPrevImage()" class="absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 text-white text-5xl p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">&#8249;</button>
+        <img id="lightbox-img" src="" alt="تصویر بزرگ شده" class="max-w-[95vw] max-h-[95vh] object-contain cursor-zoom-in" onclick="toggleZoom(this)">
+        <button onclick="showNextImage()" class="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 text-white text-5xl p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">&#8250;</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryContainer = document.getElementById('image-gallery');
+            const images = galleryContainer.querySelectorAll('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            let currentImageIndex = 0;
+
+            const galleryImageSources = Array.from(images).map(img => img.src);
+
+            function openLightbox(index) {
+                currentImageIndex = index;
+                lightboxImg.src = galleryImageSources[currentImageIndex];
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+
+            window.closeLightbox = function() {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                lightboxImg.classList.remove('scale-150', 'cursor-zoom-out');
+                lightboxImg.classList.add('cursor-zoom-in');
+                document.body.style.overflow = 'auto';
+            }
+
+            window.showNextImage = function() {
+                currentImageIndex = (currentImageIndex + 1) % galleryImageSources.length;
+                lightboxImg.src = galleryImageSources[currentImageIndex];
+                lightboxImg.classList.remove('scale-150', 'cursor-zoom-out');
+                 lightboxImg.classList.add('cursor-zoom-in');
+            }
+
+            window.showPrevImage = function() {
+                currentImageIndex = (currentImageIndex - 1 + galleryImageSources.length) % galleryImageSources.length;
+                lightboxImg.src = galleryImageSources[currentImageIndex];
+                lightboxImg.classList.remove('scale-150', 'cursor-zoom-out');
+                 lightboxImg.classList.add('cursor-zoom-in');
+            }
+            
+            window.toggleZoom = function(img) {
+                img.classList.toggle('scale-150');
+                img.classList.toggle('cursor-zoom-in');
+                img.classList.toggle('cursor-zoom-out');
+            }
+
+            images.forEach((img, index) => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', () => openLightbox(index));
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('hidden')) {
+                    if (e.key === 'ArrowRight') showNextImage();
+                    if (e.key === 'ArrowLeft') showPrevImage();
+                    if (e.key === 'Escape') closeLightbox();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 
