@@ -60,6 +60,7 @@
         .delay-500 { animation-delay: 500ms; }
         .delay-600 { animation-delay: 600ms; }
         .delay-700 { animation-delay: 700ms; }
+        .delay-800 { animation-delay: 800ms; }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
         ::-webkit-scrollbar-thumb { background-color: rgba(255,255,255,0.2); border-radius: 10px; border: 2px solid transparent; background-clip: content-box; }
@@ -78,7 +79,7 @@
 
     <!-- Floating Back to Services Button -->
     <a href="services.html" title="بازگشت به لیست دانشگاه‌ها" class="fixed top-5 left-5 z-50 glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
             <path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path>
         </svg>
     </a>
@@ -149,6 +150,8 @@
                         <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>مشخصات و هزینه‌ها</h2>
                         <ul class="space-y-4 text-slate-300 border-b border-slate-700 pb-4">
                             <li class="flex justify-between items-center"><span>شهریه سالانه:</span><strong class="text-white font-semibold">۴۵,۰۰۰ یوان</strong></li>
+                            <li class="flex justify-between items-center"><span>هزینه خوابگاه (سالیانه):</span><strong class="text-white font-semibold">۱۰,۰۰۰ یوان</strong></li>
+                            <li class="flex justify-between items-center"><span>هزینه خوابگاه (ماهانه):</span><strong class="text-white font-semibold">۱,۲۰۰ یوان</strong></li>
                             <li class="flex justify-between items-center"><span>مدت زمان دوره:</span><strong class="text-white font-semibold">۵ سال</strong></li>
                         </ul>
                         <ul class="space-y-4 text-slate-300 pt-4">
@@ -167,6 +170,23 @@
                     </section>
                 </div>
             </div>
+            
+            <!-- Support Section -->
+            <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-700 shadow-2xl text-center">
+                <h2 class="text-2xl font-bold text-cyan-300 mb-4 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-300"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    پشتیبانی و مشاوره پذیرش
+                </h2>
+                <p class="text-slate-300 leading-relaxed max-w-xl mx-auto">
+                    برای دریافت مشاوره رایگان، پاسخ به سوالات و شروع فرآیند پذیرش، می‌توانید به صورت مستقیم از طریق تلگرام با ما در ارتباط باشید.
+                </p>
+                <div class="mt-6">
+                    <a href="tg://resolve?domain=mehrshaw" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 rounded-full glass-effect px-6 py-3 text-base text-white/90 hover:text-white shadow-lg transition-transform hover:scale-105">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+                        ارتباط در تلگرام
+                    </a>
+                </div>
+            </section>
 
         </div>
     </main>
