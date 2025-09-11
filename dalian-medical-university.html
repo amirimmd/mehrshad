@@ -203,7 +203,7 @@
     <!-- Lightbox Modal -->
     <div id="lightbox" class="fixed inset-0 bg-black/90 z-[999] hidden items-center justify-center p-4 transition-opacity duration-300">
         <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white text-5xl opacity-80 hover:opacity-100">&times;</button>
-        <button onclick="showPrevImage()" class="absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 text-white text-5xl p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">&#8249;</button>
+        <button onclick="showPrevImage()" class="absolute left-2 sm:left-5 top-1/2 -translate-y-1.2 text-white text-5xl p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">&#8249;</button>
         <img id="lightbox-img" src="" alt="تصویر بزرگ شده" class="max-w-[95vw] max-h-[95vh] object-contain cursor-zoom-in" onclick="toggleZoom(this)">
         <button onclick="showNextImage()" class="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 text-white text-5xl p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">&#8250;</button>
     </div>
@@ -270,7 +270,7 @@
 
             // Weather functionality
             const fetchWeather = async () => {
-                const apiKey = "5ab75a4047cbba259a0832dbf838fbc6";
+                const apiKey = "df30fc7c6634e18343884eb4bdaf3e4a";
                 const city = "Dalian";
                 const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=fa`;
                 const weatherWidget = document.getElementById('weather-widget');
@@ -293,7 +293,7 @@
                     `;
                 } catch (error) {
                     console.error("Failed to fetch weather:", error);
-                    weatherWidget.innerHTML = `<div class="text-sm text-slate-400">خطا در دریافت اطلاعات آب و هوا</div>`;
+                    weatherWidget.innerHTML = `<div class="text-sm text-slate-400">اطلاعات آب و هوا در دسترس نیست</div>`;
                 }
             };
 
