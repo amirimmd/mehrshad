@@ -1,235 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehrshad Rokni - China University Admissions</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>لیست دانشگاه های برتر چین | پزشکی، دندانپزشکی و داروسازی</title>
+    <meta name="description" content="اطلاعات کامل و لیست دانشگاه‌های برتر چین در رشته‌های پزشکی، دندان‌پزشکی و داروسازی برای دانشجویان بین‌المللی. با ما برای اخذ پذیرش در تماس باشید.">
+    <meta name="keywords" content="پذیرش دانشگاه چین, تحصیل در چین, دانشگاه پزشکی پکن, دانشگاه شانگهای, تحصیل دندانپزشکی در چین, تحصیل داروسازی در چین, مهرشاد رکنی">
+    <meta name="author" content="Mehrshad Rokni">
+
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Vazirmatn for Persian, Noto Sans SC for Chinese -->
+    <!-- Google Fonts: Vazirmatn -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Applying custom fonts */
+        /* Applying custom fonts and base styles */
         body {
-            font-family: sans-serif;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            overflow-y: auto; /* Allow vertical scroll if content overflows */
-        }
-        .font-chinese {
-            font-family: 'Noto Sans SC', sans-serif;
-        }
-        .font-english {
             font-family: 'Vazirmatn', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            background: linear-gradient(-45deg, #020617, #1e3a8a, #0891b2, #111827);
+            background-size: 400% 400%;
+            animation: gradientBG 20s ease infinite;
         }
 
-        /* --- Glassmorphism Effect for Buttons --- */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- Glassmorphism Effect --- */
         .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* For Safari */
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: background 0.3s ease, border 0.3s ease, transform 0.3s ease;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .glass-effect:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px); /* Slight lift on hover */
+        
+        /* New darker glass effect for university cards */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5); /* Even darker slate bg */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .glass-card:hover {
+            background: rgba(51, 65, 85, 0.7);
+            border-color: rgba(56, 189, 248, 0.5);
+            transform: translateY(-5px); /* Lift effect */
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        /* --- Tooltip for Price Info --- */
-        .tooltip-container {
-            position: relative;
-            display: inline-block;
-        }
-        .tooltip-text {
-            visibility: hidden;
-            width: 220px; /* Increased width for new text */
-            background-color: rgba(0,0,0,0.8);
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 8px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%; /* Position above the icon */
-            left: 50%;
-            margin-left: -110px; /* Adjusted margin */
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 12px;
-        }
-        .tooltip-container:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
-        }
 
         /* --- Animations --- */
-        @keyframes fadeInSlideUp {
-            from { opacity: 0; transform: translateY(25px); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fadeIn { /* A simpler fade-in for corner elements */
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes kenBurnsEffect {
-            0% { transform: scale(1.1) rotate(1deg); }
-            100% { transform: scale(1) rotate(0deg); }
-        }
-        @keyframes scaleX {
-            from { transform: scaleX(0); }
-            to { transform: scaleX(1); }
-        }
 
-        /* --- Utility Classes --- */
-        .animate-intro {
+        .animate-on-load {
             opacity: 0;
-            animation: fadeInSlideUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-        .animate-fade {
-            opacity: 0;
-            animation: fadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-        .bg-image-animate {}
-
-        /* --- Classic Graphic Elements (Now Responsive) --- */
-        .decorative-line::before,
-        .decorative-line::after {
-            content: '';
-            display: block;
-            width: 60px; /* Default width for mobile */
-            height: 1px;
-            background-color: rgba(255, 255, 255, 0.7);
-            margin: 1rem auto;
-            transform: scaleX(0);
-            transform-origin: center;
-            animation: scaleX 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 800ms forwards;
-        }
-
-        /* On screens 768px and wider (tablets and up), apply richer effects */
-        @media (min-width: 768px) {
-            .decorative-line::before,
-            .decorative-line::after {
-                width: 80px;
-            }
-            .bg-image-animate {
-                animation: kenBurnsEffect 20s ease-out forwards;
-            }
+            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
         /* --- Staggered Animation Delays --- */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
         .delay-300 { animation-delay: 300ms; }
-        .delay-600 { animation-delay: 600ms; }
-        .delay-900 { animation-delay: 900ms; }
-        .delay-1200 { animation-delay: 1200ms; }
-        .delay-1500 { animation-delay: 1500ms; }
-        .delay-1800 { animation-delay: 1800ms; }
-        .delay-2100 { animation-delay: 2100ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+
+        /* Custom scrollbar for a modern look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+        
+        .accordion-content {
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
     </style>
 </head>
-<body class="bg-black">
+<body class="text-slate-200">
 
-    <main class="relative w-full min-h-screen overflow-hidden">
-        <!-- Background Image Container -->
-        <div class="absolute inset-0 z-0 h-full">
-            <img src="back.webp" alt="Background Image" class="w-full h-full object-cover object-center bg-image-animate">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
-        </div>
+    <!-- Floating Back to Home Button -->
+    <a href="index.html" title="بازگشت به صفحه اصلی" class="fixed top-5 left-5 z-50 glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+            <path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path>
+        </svg>
+    </a>
 
-        <!-- Yuan Price Display -->
-        <div dir="rtl" class="animate-fade delay-1500 absolute top-4 right-4 sm:top-6 sm:right-6 z-20">
-            <button id="price-widget" class="glass-effect rounded-lg sm:rounded-full px-3 py-2 flex flex-col sm:flex-row items-end sm:items-center shadow-lg cursor-pointer sm:space-x-3 sm:space-x-reverse">
-                <div class="flex items-center space-x-2 space-x-reverse">
-                    <div class="tooltip-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle text-white/50" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.082.082-.38-.29-.071c-.293-.07-.352-.176-.288-.469l.738-3.468c.064-.293-.006-.399-.287-.47L8 9.58l-.205-.098.082-.38.29.071c.293.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.082.082-.38-.29-.071c-.293-.07-.352-.176-.288-.469L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                        </svg>
-                        <span id="tooltip-text" class="tooltip-text font-english">نرخ ارز در حال به‌روزرسانی است.</span>
+    <!-- Main Content -->
+    <main class="relative z-10 container mx-auto px-4 py-16 sm:py-24">
+        
+        <header class="text-center mb-12 sm:mb-16">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-wider animate-on-load delay-100" style="text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);">دانشگاه‌های برتر چین</h1>
+            <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto animate-on-load delay-200">
+                لیست دانشگاه‌های معتبر در رشته‌های علوم پزشکی، مورد تأیید برای دانشجویان بین‌المللی
+            </p>
+        </header>
+
+        <div class="max-w-4xl mx-auto space-y-6">
+            
+            <!-- Accordion Item 1: Medical -->
+            <div class="animate-on-load delay-300">
+                <button class="accordion-header w-full flex justify-between items-center text-right p-5 rounded-lg glass-card transition hover:bg-slate-700/60">
+                    <div class="flex items-center gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        <h2 class="text-xl sm:text-2xl font-bold text-cyan-300">پزشکی</h2>
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-auto flex-shrink-0" viewBox="0 0 900 600"><rect fill="#de2910" width="900" height="600"/><path fill="#ffde00" d="m150 120 46.953 145.083L53.047 169.083h193.906L103.047 265.083z"/><path fill="#ffde00" d="m300 60 12.311 38.073-32.311-23.773h40L282.311 98.073z"/><path fill="#ffde00" d="m300 120 23.047 35.083-37.581-14.583h46.953L262.419 155.083z"/><path fill="#ffde00" d="m276.953 155.083 32.311 23.773-12.311-38.073L319.689 142l-40-.001z"/><path fill="#ffde00" d="m262.419 98.073 37.581 14.583L276.953 77.581l-23.047-35.083L282.311 60z"/></svg>
-                    <span class="font-english text-sm text-white/80">نرخ یوان:</span>
-                    <span id="yuan-price" class="font-english text-base font-bold text-cyan-300 min-w-[50px] text-center">...</span>
-                </div>
-                <span id="last-updated" class="font-english text-xs text-white/40 whitespace-nowrap mt-1 sm:mt-0"></span>
-            </button>
-        </div>
-
-        <!-- Price History Modal -->
-        <div id="price-history-modal" class="hidden animate-fade absolute top-24 sm:top-20 right-4 sm:right-6 z-20 w-64 glass-effect rounded-lg shadow-lg p-4 text-right" dir="rtl">
-            <div class="flex justify-between items-center mb-2">
-                <h3 class="font-english text-white font-bold">تاریخچه نرخ یوان</h3>
-                <button id="close-history-btn" class="text-white/50 text-2xl hover:text-white">&times;</button>
-            </div>
-            <ul id="price-history-list" class="space-y-2 text-sm max-h-48 overflow-y-auto">
-                <!-- History will be populated here by JS -->
-            </ul>
-        </div>
-
-
-        <!-- Content Container -->
-        <div class="relative z-10 flex flex-col items-center justify-center min-h-screen text-white text-center p-4 pt-28 sm:pt-4 md:p-8">
-            
-            <div class="animate-intro delay-300">
-                <h1 class="font-chinese text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-wider" style="text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);">
-                    梅赫沙德 · 罗克尼
-                </h1>
-            </div>
-            
-            <div class="animate-intro delay-600 decorative-line"></div>
-            
-            <div class="animate-intro delay-900">
-                <p class="font-english text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-widest md:tracking-[0.2em]" style="text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);">
-                    China University Admissions
-                </p>
-            </div>
-
-            <div class="animate-intro delay-1200 mt-10 flex flex-col items-center gap-4">
-                <a href="services.html" class="glass-effect font-english rounded-full px-8 py-3 text-base sm:text-lg tracking-widest text-white/90 hover:text-white shadow-lg w-full max-w-xs sm:max-w-md">
-                    دانشگاه‌های مورد پذیرش در چین
-                </a>
-                <a href="#" class="glass-effect font-english rounded-full px-8 py-3 text-base sm:text-lg tracking-widest text-white/90 hover:text-white shadow-lg w-full max-w-xs sm:max-w-md">
-                    پرونده‌های موفق
-                </a>
-                 <a href="#" class="glass-effect font-english rounded-full px-8 py-3 text-base sm:text-lg tracking-widest text-white/90 hover:text-white shadow-lg w-full max-w-xs sm:max-w-md">
-                    درباره ما
-                </a>
-            </div>
-
-            <div class="animate-intro delay-1800 mt-12">
-                <p class="font-english text-white/80 mb-4">راه‌های ارتباطی</p>
-                <div class="flex space-x-4">
-                    <a href="instagram://user?username=mehrshadrokni" target="_blank" rel="noopener noreferrer" class="glass-effect rounded-full p-3 text-white/70 hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a href="tg://resolve?domain=mehrshaw" target="_blank" rel="noopener noreferrer" class="glass-effect rounded-full p-3 text-white/70 hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path>
-                        </svg>
-                    </a>
+                    <svg class="accordion-icon w-6 h-6 text-cyan-300 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                </button>
+                <div class="accordion-content pt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی پکن</h3><p class="text-sm text-slate-400 mt-1">Peking University School of Medicine</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی شانگهای</h3><p class="text-sm text-slate-400 mt-1">Shanghai Jiao Tong University School of Medicine</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی فوجیان</h3><p class="text-sm text-slate-400 mt-1">Fujian Medical University</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی هاربین</h3><p class="text-sm text-slate-400 mt-1">Harbin Medical University</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی جیلین</h3><p class="text-sm text-slate-400 mt-1">Jilin University School of Medicine</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی نانجینگ</h3><p class="text-sm text-slate-400 mt-1">Nanjing Medical University</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی چونگ‌کینگ</h3><p class="text-sm text-slate-400 mt-1">Chongqing Medical University</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی دالیان</h3><p class="text-sm text-slate-400 mt-1">Dalian Medical University</p></div></a>
                 </div>
             </div>
 
-            <!-- WeChat QR Codes Section -->
-            <div class="animate-intro delay-2100 mt-8 w-full">
-                <p class="font-english text-white/70 mb-4">ارتباط از طریق وی‌چت</p>
-                <div class="flex flex-row items-stretch justify-center gap-4 sm:gap-8 md:gap-12 pb-8">
-                    <div class="glass-effect rounded-2xl p-3 sm:p-4 text-center flex flex-col items-center">
-                        <img src="MehrshadRokni.jpg" alt="WeChat QR Code for Mehrshad Rokni" class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg mx-auto shadow-lg">
-                        <p class="font-english mt-3 sm:mt-4 text-sm sm:text-base text-white/90 tracking-wider">Mehrshad Rokni</p>
+            <!-- Accordion Item 2: Dentistry -->
+            <div class="animate-on-load delay-400">
+                <button class="accordion-header w-full flex justify-between items-center text-right p-5 rounded-lg glass-card transition hover:bg-slate-700/60">
+                    <div class="flex items-center gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5,2.5a.5.5,0,0,0-1,0v1a.5.5,0,0,0,1,0Z"/><path d="M12.5,20.5a.5.5,0,0,0-1,0v1a.5.5,0,0,0,1,0Z"/><path d="M16.44,4.06a.5.5,0,0,0-.71.71l.71.71a.5.5,0,0,0,.71-.71Z"/><path d="M7.56,18.94a.5.5,0,0,0-.71.71l.71.71a.5.5,0,0,0,.71-.71Z"/><path d="M21,11.5H20a.5.5,0,0,0,0,1h1a.5.5,0,0,0,0-1Z"/><path d="M4,11.5H3a.5.5,0,0,0,0,1H4a.5.5,0,0,0,0-1Z"/><path d="M18.94,7.56a.5.5,0,0,0-.71-.71l-.71.71a.5.5,0,1,0,.71.71Z"/><path d="M4.06,16.44a.5.5,0,0,0-.71-.71l-.71.71a.5.5,0,0,0,.71.71Z"/><path d="M12,6.41A5.5,5.5,0,0,0,6.5,11.91v3.65a2,2,0,0,1-2,2,2,2,0,0,0,2,2h5.09a2,2,0,0,0,2-2,2,2,0,0,1,2-2V11.91A5.5,5.5,0,0,0,12,6.41Z"/></svg>
+                         <h2 class="text-xl sm:text-2xl font-bold text-cyan-300">دندان‌پزشکی</h2>
                     </div>
-                    <div class="glass-effect rounded-2xl p-3 sm:p-4 text-center flex flex-col items-center">
-                        <img src="HamidMahmoudi.jpg" alt="WeChat QR Code for Hamid Mahmoudi" class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg mx-auto shadow-lg">
-                        <p class="font-english mt-3 sm:mt-4 text-sm sm:text-base text-white/90 tracking-wider">Hamid Mahmoudi</p>
+                    <svg class="accordion-icon w-6 h-6 text-cyan-300 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                </button>
+                <div class="accordion-content pt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی پکن</h3><p class="text-sm text-slate-400 mt-1">Peking University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی شانگهای</h3><p class="text-sm text-slate-400 mt-1">Shanghai Jiao Tong University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی نانجینگ</h3><p class="text-sm text-slate-400 mt-1">Nanjing Medical University School of Stomatology</p></div></a>
+                    <a href="pages/Medicine/dalian-medical-university.html" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center border-2 border-cyan-400/50 hover:border-cyan-400"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی دالیان</h3><p class="text-sm text-slate-400 mt-1">Dalian Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی جیلین</h3><p class="text-sm text-slate-400 mt-1">Jilin Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">کالج پزشکی تانگجی (دانشگاه هوآژونگ)</h3><p class="text-sm text-slate-400 mt-1">Tongji Medical College, HUST, School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی ووهان</h3><p class="text-sm text-slate-400 mt-1">Wuhan University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی شاندونگ</h3><p class="text-sm text-slate-400 mt-1">Shandong University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی شیان</h3><p class="text-sm text-slate-400 mt-1">Xi'an Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی چونگ‌چینگ</h3><p class="text-sm text-slate-400 mt-1">Chongqing Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی هاربین</h3><p class="text-sm text-slate-400 mt-1">Harbin Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی ژنگ‌ژو</h3><p class="text-sm text-slate-400 mt-1">Zhengzhou University School of Dentistry</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی کپیتال</h3><p class="text-sm text-slate-400 mt-1">Capital Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی ساوترن</h3><p class="text-sm text-slate-400 mt-1">Southern Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی گوانگ‌دونگ</h3><p class="text-sm text-slate-400 mt-1">Guangdong Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">کالج پزشکی شانگهای (دانشگاه فودان)</h3><p class="text-sm text-slate-400 mt-1">Shanghai Medical College, Fudan University</p></div></a>
+                </div>
+            </div>
+            
+            <!-- Accordion Item 3: Pharmacy -->
+            <div class="animate-on-load delay-500">
+                <button class="accordion-header w-full flex justify-between items-center text-right p-5 rounded-lg glass-card transition hover:bg-slate-700/60">
+                    <div class="flex items-center gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                        <h2 class="text-xl sm:text-2xl font-bold text-cyan-300">داروسازی</h2>
                     </div>
+                    <svg class="accordion-icon w-6 h-6 text-cyan-300 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                </button>
+                <div class="accordion-content pt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه داروسازی پکن</h3><p class="text-sm text-slate-400 mt-1">Peking University School of Pharmaceutical Sciences</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه داروسازی شانگهای</h3><p class="text-sm text-slate-400 mt-1">Shanghai Jiao Tong University School of Pharmacy</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه طب سنتی چینی نانجینگ</h3><p class="text-sm text-slate-400 mt-1">Nanjing University of Chinese Medicine</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه داروسازی گوانگ‌دونگ</h3><p class="text-sm text-slate-400 mt-1">Guangdong Pharmaceutical University</p></div></a>
                 </div>
             </div>
 
@@ -237,109 +192,23 @@
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const priceElement = document.getElementById('yuan-price');
-            const lastUpdatedElement = document.getElementById('last-updated');
-            const tooltipTextElement = document.getElementById('tooltip-text');
-            const priceWidget = document.getElementById('price-widget');
-            const historyModal = document.getElementById('price-history-modal');
-            const closeHistoryBtn = document.getElementById('close-history-btn');
-            const historyList = document.getElementById('price-history-list');
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordions = document.querySelectorAll('.accordion-header');
 
-            const updatePriceDisplay = (price, dateStr, source) => {
-                const finalPrice = price * 1.02; // Apply 2% increase here
-                const formattedPrice = Math.round(finalPrice).toLocaleString('fa-IR');
-                priceElement.textContent = `${formattedPrice} تومان`;
-                
-                if (dateStr) {
-                    const parts = dateStr.split(' ');
-                    const datePart = parts[0];
-                    const timePart = parts.length > 1 ? ` - ${parts[1]}` : '';
-                    lastUpdatedElement.textContent = `(${datePart}${timePart})`;
-                } else {
-                    lastUpdatedElement.textContent = `(بروزرسانی شده)`;
-                }
-                tooltipTextElement.textContent = `نرخ ارز از سرویس ${source} دریافت شده است.`;
-            };
-
-            const setFallbackPrice = () => {
-                priceElement.textContent = '~ ۸,۸۷۴ تومان'; // 8700 * 1.02
-                lastUpdatedElement.textContent = '(نرخ لحظه‌ای در دسترس نیست)';
-                tooltipTextElement.textContent = 'سرویس‌های نرخ ارز در دسترس نیستند.';
-            };
-
-            const fetchFromNavasan = async () => {
-                const apiKey = 'freeqJ2wDCK4oBJyieTEy7RII2LIAqzh';
-                const navasanApiUrl = `https://api.navasan.tech/latest/?api_key=${apiKey}`;
-                const response = await fetch(navasanApiUrl);
-                if (!response.ok) throw new Error('Navasan API failed');
-                const data = await response.json();
-                if (data.cny && data.cny.value) {
-                    const rawPrice = parseFloat(data.cny.value);
+            accordions.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.accordion-icon');
                     
-                    const priceData = {
-                        price: rawPrice, // Store raw price
-                        dateStr: data.cny.date,
-                        timestamp: new Date().getTime()
-                    };
-                    
-                    let history = JSON.parse(localStorage.getItem('yuanPriceHistory')) || [];
-                    history.unshift(priceData);
-                    if (history.length > 5) history = history.slice(0, 5);
-                    localStorage.setItem('yuanPriceHistory', JSON.stringify(history));
-
-                    updatePriceDisplay(priceData.price, priceData.dateStr, 'نوسان');
-                } else {
-                    throw new Error('CNY price not found in Navasan response.');
-                }
-            };
-            
-            const renderPriceHistory = () => {
-                const history = JSON.parse(localStorage.getItem('yuanPriceHistory')) || [];
-                if (history.length === 0) {
-                    historyList.innerHTML = `<li class="text-slate-400">تاریخچه‌ای برای نمایش وجود ندارد.</li>`;
-                    return;
-                }
-                historyList.innerHTML = history.map(item => {
-                    const finalPrice = item.price * 1.02;
-                    const formattedPrice = Math.round(finalPrice).toLocaleString('fa-IR');
-                    const date = new Date(item.timestamp).toLocaleString('fa-IR', { dateStyle: 'short', timeStyle: 'short'});
-                    return `<li class="flex justify-between text-slate-300 border-b border-white/10 pb-1"><span>${formattedPrice} تومان</span><span class="text-slate-500 text-xs">${date}</span></li>`;
-                }).join('');
-            };
-
-            priceWidget.addEventListener('click', () => {
-                renderPriceHistory();
-                historyModal.classList.remove('hidden');
-            });
-
-            closeHistoryBtn.addEventListener('click', () => {
-                historyModal.classList.add('hidden');
-            });
-            
-            // --- Execution Logic with Caching ---
-            const CACHE_DURATION = 4 * 60 * 60 * 1000; // 4 hours in milliseconds
-            const history = JSON.parse(localStorage.getItem('yuanPriceHistory')) || [];
-            const latestCache = history[0];
-            const now = new Date().getTime();
-
-            if (latestCache && (now - latestCache.timestamp < CACHE_DURATION)) {
-                console.log("Using cached Yuan price from Navasan.");
-                updatePriceDisplay(latestCache.price, latestCache.dateStr, 'نوسان (کش شده)');
-            } else {
-                console.log("Cache is old or missing. Fetching new Yuan price.");
-                try {
-                    await fetchFromNavasan();
-                    console.log("Fetched from Navasan successfully.");
-                } catch (navasanError) {
-                    console.error("Navasan API failed:", navasanError);
-                    if(latestCache) {
-                        updatePriceDisplay(latestCache.price, latestCache.dateStr, 'نوسان (قدیمی)');
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        icon.classList.remove('rotate-180');
                     } else {
-                        setFallbackPrice();
+                        content.style.maxHeight = content.scrollHeight + 32 + "px";
+                        icon.classList.add('rotate-180');
                     }
-                }
-            }
+                });
+            });
         });
     </script>
 
