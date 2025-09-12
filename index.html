@@ -148,7 +148,7 @@
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.082.082-.38-.29-.071c-.293-.07-.352-.176-.288-.469l.738-3.468c.064-.293-.006-.399-.287-.47L8 9.58l-.205-.098.082-.38.29.071c.293.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.082.082-.38-.29-.071c-.293-.07-.352-.176-.288-.469L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                     </svg>
-                    <span class="tooltip-text font-english">نرخ یوان از سرویس نوسان دریافت می شود.</span>
+                    <span id="tooltip-text" class="tooltip-text font-english">نرخ ارز در حال به‌روزرسانی است.</span>
                 </div>
                 <span class="font-english text-sm text-white/80">نرخ یوان:</span>
                 <span id="yuan-price" class="font-english text-base font-bold text-cyan-300 min-w-[60px] text-center">...</span>
@@ -218,41 +218,70 @@
         document.addEventListener('DOMContentLoaded', async () => {
             const priceElement = document.getElementById('yuan-price');
             const lastUpdatedElement = document.getElementById('last-updated');
-            
-            const apiKey = 'freeHlo3owlv6DQ9whcCOXeC1CNs0rxi';
-            const navasanApiUrl = `https://api.navasan.tech/latest/?api_key=${apiKey}`;
+            const tooltipTextElement = document.getElementById('tooltip-text');
 
-            try {
-                const response = await fetch(navasanApiUrl);
-
-                if (!response.ok) {
-                    throw new Error(`Network response was not ok: ${response.statusText}`);
-                }
+            const updatePriceDisplay = (price, dateStr, source) => {
+                const formattedPrice = Math.round(price).toLocaleString('fa-IR');
+                priceElement.textContent = `${formattedPrice} تومان`;
                 
-                const data = await response.json();
-
-                if (data.cny && data.cny.value) {
-                    const yuanPrice = parseFloat(data.cny.value);
-                    const updateTimestamp = data.cny.date; 
-                    
-                    const formattedPrice = Math.round(yuanPrice).toLocaleString('fa-IR');
-                    priceElement.textContent = `${formattedPrice} تومان`;
-
-                    if (updateTimestamp) {
-                        const parts = updateTimestamp.split(' ');
-                        const datePart = parts[0];
-                        const timePart = parts[1];
-                        lastUpdatedElement.textContent = `(${datePart} - ${timePart})`;
-                    }
-
+                if (dateStr) {
+                    const parts = dateStr.split(' ');
+                    const datePart = parts[0];
+                    const timePart = parts.length > 1 ? ` - ${parts[1]}` : '';
+                    lastUpdatedElement.textContent = `(${datePart}${timePart})`;
                 } else {
-                    throw new Error('CNY price not found in API response.');
+                    lastUpdatedElement.textContent = `(بروزرسانی شده)`;
                 }
+                tooltipTextElement.textContent = `نرخ ارز از سرویس ${source} دریافت شده است.`;
+            };
 
-            } catch (error) {
-                console.error('Failed to fetch currency price from Navasan API:', error);
+            const setFallbackPrice = () => {
                 priceElement.textContent = '~ ۸,۷۰۰ تومان'; 
                 lastUpdatedElement.textContent = '(نرخ لحظه‌ای در دسترس نیست)';
+                tooltipTextElement.textContent = 'سرویس‌های نرخ ارز در دسترس نیستند.';
+            };
+
+            const fetchFromNavasan = async () => {
+                const apiKey = 'freeqJ2wDCK4oBJyieTEy7RII2LIAqzh';
+                const navasanApiUrl = `https://api.navasan.tech/latest/?api_key=${apiKey}`;
+                const response = await fetch(navasanApiUrl);
+                if (!response.ok) throw new Error('Navasan API failed');
+                const data = await response.json();
+                if (data.cny && data.cny.value) {
+                    const priceData = {
+                        price: parseFloat(data.cny.value),
+                        dateStr: data.cny.date,
+                        timestamp: new Date().getTime()
+                    };
+                    localStorage.setItem('yuanPriceCache', JSON.stringify(priceData));
+                    updatePriceDisplay(priceData.price, priceData.dateStr, 'نوسان');
+                } else {
+                    throw new Error('CNY price not found in Navasan response.');
+                }
+            };
+
+            const fetchFromFallback = async () => {
+                 // Fallback is removed to rely solely on Navasan with cache
+                 throw new Error("Fallback disabled to preserve primary API calls.");
+            };
+            
+            // --- Execution Logic with Caching ---
+            const CACHE_DURATION = 4 * 60 * 60 * 1000; // 4 hours in milliseconds
+            const cachedData = JSON.parse(localStorage.getItem('yuanPriceCache'));
+            const now = new Date().getTime();
+
+            if (cachedData && (now - cachedData.timestamp < CACHE_DURATION)) {
+                console.log("Using cached Yuan price from Navasan.");
+                updatePriceDisplay(cachedData.price, cachedData.dateStr, 'نوسان (کش شده)');
+            } else {
+                console.log("Cache is old or missing. Fetching new Yuan price.");
+                try {
+                    await fetchFromNavasan();
+                    console.log("Fetched from Navasan successfully.");
+                } catch (navasanError) {
+                    console.error("Navasan API failed:", navasanError);
+                    setFallbackPrice();
+                }
             }
         });
     </script>
