@@ -142,18 +142,20 @@
 
         <!-- Yuan Price Display -->
         <div dir="rtl" class="animate-fade delay-1500 absolute top-4 right-4 sm:top-6 sm:right-6 z-20">
-            <button id="price-widget" class="glass-effect rounded-full px-4 py-2 flex items-center shadow-lg cursor-pointer">
-                <div class="tooltip-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle text-white/50" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.082.082-.38-.29-.071c-.293-.07-.352-.176-.288-.469l.738-3.468c.064-.293-.006-.399-.287-.47L8 9.58l-.205-.098.082-.38.29.071c.293.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.082.082-.38-.29-.071c-.293-.07-.352-.176-.288-.469L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                    </svg>
-                    <span id="tooltip-text" class="tooltip-text font-english">نرخ ارز در حال به‌روزرسانی است.</span>
+            <button id="price-widget" class="glass-effect rounded-lg sm:rounded-full px-3 py-2 flex flex-col sm:flex-row items-end sm:items-center shadow-lg cursor-pointer">
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <div class="tooltip-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle text-white/50" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.082.082-.38-.29-.071c-.293-.07-.352-.176-.288-.469l.738-3.468c.064-.293-.006-.399-.287-.47L8 9.58l-.205-.098.082-.38.29.071c.293.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.082.082-.38-.29-.071c-.293-.07-.352-.176-.288-.469L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                        </svg>
+                        <span id="tooltip-text" class="tooltip-text font-english">نرخ ارز در حال به‌روزرسانی است.</span>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-auto flex-shrink-0" viewBox="0 0 900 600"><rect fill="#de2910" width="900" height="600"/><path fill="#ffde00" d="m150 120 46.953 145.083L53.047 169.083h193.906L103.047 265.083z"/><path fill="#ffde00" d="m300 60 12.311 38.073-32.311-23.773h40L282.311 98.073z"/><path fill="#ffde00" d="m300 120 23.047 35.083-37.581-14.583h46.953L262.419 155.083z"/><path fill="#ffde00" d="m276.953 155.083 32.311 23.773-12.311-38.073L319.689 142l-40-.001z"/><path fill="#ffde00" d="m262.419 98.073 37.581 14.583L276.953 77.581l-23.047-35.083L282.311 60z"/></svg>
+                    <span class="font-english text-sm text-white/80">نرخ یوان:</span>
+                    <span id="yuan-price" class="font-english text-base font-bold text-cyan-300 min-w-[50px] text-center">...</span>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-auto mr-2" viewBox="0 0 900 600"><rect fill="#de2910" width="900" height="600"/><path fill="#ffde00" d="m150 120 46.953 145.083L53.047 169.083h193.906L103.047 265.083z"/><path fill="#ffde00" d="m300 60 12.311 38.073-32.311-23.773h40L282.311 98.073z"/><path fill="#ffde00" d="m300 120 23.047 35.083-37.581-14.583h46.953L262.419 155.083z"/><path fill="#ffde00" d="m276.953 155.083 32.311 23.773-12.311-38.073L319.689 142l-40-.001z"/><path fill="#ffde00" d="m262.419 98.073 37.581 14.583L276.953 77.581l-23.047-35.083L282.311 60z"/></svg>
-                <span class="font-english text-sm text-white/80 mr-3">نرخ یوان:</span>
-                <span id="yuan-price" class="font-english text-base font-bold text-cyan-300 min-w-[60px] text-center mr-3">...</span>
-                <span id="last-updated" class="font-english text-xs text-white/40"></span>
+                <span id="last-updated" class="font-english text-xs text-white/40 whitespace-nowrap mt-1"></span>
             </button>
         </div>
 
@@ -186,9 +188,12 @@
                 </p>
             </div>
 
-            <div class="animate-intro delay-1200 mt-10">
+            <div class="animate-intro delay-1200 mt-10 flex flex-col items-center gap-4">
                 <a href="services.html" class="glass-effect font-english rounded-full px-8 py-3 text-base sm:text-lg tracking-widest text-white/90 hover:text-white shadow-lg">
-                    Explore Services
+                    دانشگاه‌های مورد پذیرش در چین
+                </a>
+                <a href="#" class="glass-effect font-english rounded-full px-8 py-3 text-base sm:text-lg tracking-widest text-white/90 hover:text-white shadow-lg">
+                    پرونده‌های موفق
                 </a>
             </div>
 
@@ -265,8 +270,11 @@
                 if (!response.ok) throw new Error('Navasan API failed');
                 const data = await response.json();
                 if (data.cny && data.cny.value) {
+                    const rawPrice = parseFloat(data.cny.value);
+                    const finalPrice = rawPrice * 1.02; // Apply 2% increase
+                    
                     const priceData = {
-                        price: parseFloat(data.cny.value),
+                        price: finalPrice,
                         dateStr: data.cny.date,
                         timestamp: new Date().getTime()
                     };
