@@ -16,20 +16,29 @@
     <!-- Google Fonts: Vazirmatn -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* Applying custom fonts and base styles */
         body {
             font-family: 'Vazirmatn', sans-serif;
             overflow-x: hidden; /* Prevent horizontal scroll */
+            background: linear-gradient(-45deg, #020617, #1e3a8a, #0891b2, #111827);
+            background-size: 400% 400%;
+            animation: gradientBG 20s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* --- Glassmorphism Effect --- */
         .glass-effect {
-            background: rgba(15, 23, 42, 0.6); /* A darker, more readable glass */
+            background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px); /* For Safari */
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
@@ -43,9 +52,9 @@
         }
         .glass-card:hover {
             background: rgba(51, 65, 85, 0.7);
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(56, 189, 248, 0.5);
             transform: translateY(-5px); /* Lift effect */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
 
@@ -66,8 +75,6 @@
         .delay-300 { animation-delay: 300ms; }
         .delay-400 { animation-delay: 400ms; }
         .delay-500 { animation-delay: 500ms; }
-        .delay-600 { animation-delay: 600ms; }
-        .delay-700 { animation-delay: 700ms; }
 
         /* Custom scrollbar for a modern look */
         ::-webkit-scrollbar {
@@ -85,15 +92,15 @@
         ::-webkit-scrollbar-thumb:hover {
             background-color: rgba(255,255,255,0.4);
         }
+        
+        .accordion-content {
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-200">
-
-    <!-- Background Image Container -->
-    <div class="fixed inset-0 z-0 h-screen">
-        <img src="3535.jpg" alt="Background" class="w-full h-full object-cover object-center opacity-20">
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/80 to-slate-900"></div>
-    </div>
+<body class="text-slate-200">
 
     <!-- Floating Back to Home Button -->
     <a href="index.html" title="بازگشت به صفحه اصلی" class="fixed top-5 left-5 z-50 glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load">
@@ -106,7 +113,7 @@
     <main class="relative z-10 container mx-auto px-4 py-16 sm:py-24">
         
         <header class="text-center mb-12 sm:mb-16">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight animate-on-load delay-100">دانشگاه‌های برتر چین</h1>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-wider animate-on-load delay-100" style="text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);">دانشگاه‌های برتر چین</h1>
             <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto animate-on-load delay-200">
                 لیست دانشگاه‌های معتبر در رشته‌های علوم پزشکی، مورد تأیید برای دانشجویان بین‌المللی
             </p>
@@ -117,10 +124,13 @@
             <!-- Accordion Item 1: Medical -->
             <div class="animate-on-load delay-300">
                 <button class="accordion-header w-full flex justify-between items-center text-right p-5 rounded-lg glass-card transition hover:bg-slate-700/60">
-                    <h2 class="text-xl sm:text-2xl font-bold text-cyan-300">پزشکی</h2>
+                    <div class="flex items-center gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        <h2 class="text-xl sm:text-2xl font-bold text-cyan-300">پزشکی</h2>
+                    </div>
                     <svg class="accordion-icon w-6 h-6 text-cyan-300 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
                 </button>
-                <div class="accordion-content hidden pt-4 space-y-4">
+                <div class="accordion-content pt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی پکن</h3><p class="text-sm text-slate-400 mt-1">Peking University School of Medicine</p></div></a>
                     <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی شانگهای</h3><p class="text-sm text-slate-400 mt-1">Shanghai Jiao Tong University School of Medicine</p></div></a>
                     <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی فوجیان</h3><p class="text-sm text-slate-400 mt-1">Fujian Medical University</p></div></a>
@@ -135,24 +145,42 @@
             <!-- Accordion Item 2: Dentistry -->
             <div class="animate-on-load delay-400">
                 <button class="accordion-header w-full flex justify-between items-center text-right p-5 rounded-lg glass-card transition hover:bg-slate-700/60">
-                    <h2 class="text-xl sm:text-2xl font-bold text-cyan-300">دندان‌پزشکی</h2>
+                    <div class="flex items-center gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5,2.5a.5.5,0,0,0-1,0v1a.5.5,0,0,0,1,0Z"/><path d="M12.5,20.5a.5.5,0,0,0-1,0v1a.5.5,0,0,0,1,0Z"/><path d="M16.44,4.06a.5.5,0,0,0-.71.71l.71.71a.5.5,0,0,0,.71-.71Z"/><path d="M7.56,18.94a.5.5,0,0,0-.71.71l.71.71a.5.5,0,0,0,.71-.71Z"/><path d="M21,11.5H20a.5.5,0,0,0,0,1h1a.5.5,0,0,0,0-1Z"/><path d="M4,11.5H3a.5.5,0,0,0,0,1H4a.5.5,0,0,0,0-1Z"/><path d="M18.94,7.56a.5.5,0,0,0-.71-.71l-.71.71a.5.5,0,1,0,.71.71Z"/><path d="M4.06,16.44a.5.5,0,0,0-.71-.71l-.71.71a.5.5,0,0,0,.71.71Z"/><path d="M12,6.41A5.5,5.5,0,0,0,6.5,11.91v3.65a2,2,0,0,1-2,2,2,2,0,0,0,2,2h5.09a2,2,0,0,0,2-2,2,2,0,0,1,2-2V11.91A5.5,5.5,0,0,0,12,6.41Z"/></svg>
+                         <h2 class="text-xl sm:text-2xl font-bold text-cyan-300">دندان‌پزشکی</h2>
+                    </div>
                     <svg class="accordion-icon w-6 h-6 text-cyan-300 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
                 </button>
-                <div class="accordion-content hidden pt-4 space-y-4">
+                <div class="accordion-content pt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی پکن</h3><p class="text-sm text-slate-400 mt-1">Peking University School of Stomatology</p></div></a>
                     <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی شانگهای</h3><p class="text-sm text-slate-400 mt-1">Shanghai Jiao Tong University School of Stomatology</p></div></a>
                     <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی نانجینگ</h3><p class="text-sm text-slate-400 mt-1">Nanjing Medical University School of Stomatology</p></div></a>
                     <a href="pages/Medicine/dalian-medical-university.html" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center border-2 border-cyan-400/50 hover:border-cyan-400"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی دالیان</h3><p class="text-sm text-slate-400 mt-1">Dalian Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی جیلین</h3><p class="text-sm text-slate-400 mt-1">Jilin Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">کالج پزشکی تانگجی (دانشگاه هوآژونگ)</h3><p class="text-sm text-slate-400 mt-1">Tongji Medical College, HUST, School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی ووهان</h3><p class="text-sm text-slate-400 mt-1">Wuhan University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی شاندونگ</h3><p class="text-sm text-slate-400 mt-1">Shandong University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی شیان</h3><p class="text-sm text-slate-400 mt-1">Xi'an Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی چونگ‌چینگ</h3><p class="text-sm text-slate-400 mt-1">Chongqing Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی هاربین</h3><p class="text-sm text-slate-400 mt-1">Harbin Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه دندان‌پزشکی ژنگ‌ژو</h3><p class="text-sm text-slate-400 mt-1">Zhengzhou University School of Dentistry</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی کپیتال</h3><p class="text-sm text-slate-400 mt-1">Capital Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی ساوترن</h3><p class="text-sm text-slate-400 mt-1">Southern Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه پزشکی گوانگ‌دونگ</h3><p class="text-sm text-slate-400 mt-1">Guangdong Medical University School of Stomatology</p></div></a>
+                    <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">کالج پزشکی شانگهای (دانشگاه فودان)</h3><p class="text-sm text-slate-400 mt-1">Shanghai Medical College, Fudan University</p></div></a>
                 </div>
             </div>
             
             <!-- Accordion Item 3: Pharmacy -->
             <div class="animate-on-load delay-500">
                 <button class="accordion-header w-full flex justify-between items-center text-right p-5 rounded-lg glass-card transition hover:bg-slate-700/60">
-                    <h2 class="text-xl sm:text-2xl font-bold text-cyan-300">داروسازی</h2>
+                    <div class="flex items-center gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                        <h2 class="text-xl sm:text-2xl font-bold text-cyan-300">داروسازی</h2>
+                    </div>
                     <svg class="accordion-icon w-6 h-6 text-cyan-300 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
                 </button>
-                <div class="accordion-content hidden pt-4 space-y-4">
+                <div class="accordion-content pt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه داروسازی پکن</h3><p class="text-sm text-slate-400 mt-1">Peking University School of Pharmaceutical Sciences</p></div></a>
                     <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه داروسازی شانگهای</h3><p class="text-sm text-slate-400 mt-1">Shanghai Jiao Tong University School of Pharmacy</p></div></a>
                     <a href="#" class="block"><div class="glass-card rounded-xl p-4 cursor-pointer text-center"><h3 class="font-semibold text-white">دانشگاه طب سنتی چینی نانجینگ</h3><p class="text-sm text-slate-400 mt-1">Nanjing University of Chinese Medicine</p></div></a>
@@ -172,8 +200,14 @@
                     const content = header.nextElementSibling;
                     const icon = header.querySelector('.accordion-icon');
                     
-                    content.classList.toggle('hidden');
-                    icon.classList.toggle('rotate-180');
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        icon.classList.remove('rotate-180');
+                    } else {
+                        // We add a bit of padding to the scroll height to ensure it's not cut off
+                        content.style.maxHeight = (content.scrollHeight + 32) + "px";
+                        icon.classList.add('rotate-180');
+                    }
                 });
             });
         });
