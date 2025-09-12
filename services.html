@@ -23,7 +23,15 @@
         body {
             font-family: 'Vazirmatn', sans-serif;
             overflow-x: hidden; /* Prevent horizontal scroll */
-            background-color: #020617;
+            background: linear-gradient(-45deg, #020617, #1e3a8a, #0891b2, #111827);
+            background-size: 400% 400%;
+            animation: gradientBG 20s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* --- Glassmorphism Effect --- */
@@ -93,12 +101,6 @@
     </style>
 </head>
 <body class="text-slate-200">
-
-    <!-- Background Image Container -->
-    <div class="fixed inset-0 z-0 h-screen">
-        <img src="back.webp" alt="Background" class="w-full h-full object-cover object-center opacity-30">
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/80 to-slate-900"></div>
-    </div>
 
     <!-- Floating Back to Home Button -->
     <a href="index.html" title="بازگشت به صفحه اصلی" class="fixed top-5 left-5 z-50 glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load">
