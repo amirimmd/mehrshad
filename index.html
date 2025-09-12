@@ -142,7 +142,7 @@
 
         <!-- Yuan Price Display -->
         <div dir="rtl" class="animate-fade delay-1500 absolute top-4 right-4 sm:top-6 sm:right-6 z-20">
-            <div class="glass-effect rounded-full px-4 py-2 flex items-center space-x-3 shadow-lg">
+            <button id="price-widget" class="glass-effect rounded-full px-4 py-2 flex items-center shadow-lg cursor-pointer">
                 <div class="tooltip-container">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle text-white/50" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -150,12 +150,24 @@
                     </svg>
                     <span id="tooltip-text" class="tooltip-text font-english">نرخ ارز در حال به‌روزرسانی است.</span>
                 </div>
-                <span class="text-lg">🇨🇳</span>
-                <span class="font-english text-sm text-white/80">نرخ یوان:</span>
-                <span id="yuan-price" class="font-english text-base font-bold text-cyan-300 min-w-[60px] text-center">...</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-auto mr-2" viewBox="0 0 900 600"><rect fill="#de2910" width="900" height="600"/><path fill="#ffde00" d="m150 120 46.953 145.083L53.047 169.083h193.906L103.047 265.083z"/><path fill="#ffde00" d="m300 60 12.311 38.073-32.311-23.773h40L282.311 98.073z"/><path fill="#ffde00" d="m300 120 23.047 35.083-37.581-14.583h46.953L262.419 155.083z"/><path fill="#ffde00" d="m276.953 155.083 32.311 23.773-12.311-38.073L319.689 142l-40-.001z"/><path fill="#ffde00" d="m262.419 98.073 37.581 14.583L276.953 77.581l-23.047-35.083L282.311 60z"/></svg>
+                <span class="font-english text-sm text-white/80 mr-3">نرخ یوان:</span>
+                <span id="yuan-price" class="font-english text-base font-bold text-cyan-300 min-w-[60px] text-center mr-3">...</span>
                 <span id="last-updated" class="font-english text-xs text-white/40"></span>
-            </div>
+            </button>
         </div>
+
+        <!-- Price History Modal -->
+        <div id="price-history-modal" class="hidden animate-fade absolute top-20 right-4 sm:right-6 z-20 w-64 glass-effect rounded-lg shadow-lg p-4 text-right" dir="rtl">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="font-english text-white font-bold">تاریخچه نرخ یوان</h3>
+                <button id="close-history-btn" class="text-white/50 text-2xl hover:text-white">&times;</button>
+            </div>
+            <ul id="price-history-list" class="space-y-2 text-sm max-h-48 overflow-y-auto">
+                <!-- History will be populated here by JS -->
+            </ul>
+        </div>
+
 
         <!-- Content Container -->
         <div class="relative z-10 flex flex-col items-center justify-center min-h-screen text-white text-center p-4 md:p-8">
@@ -220,6 +232,10 @@
             const priceElement = document.getElementById('yuan-price');
             const lastUpdatedElement = document.getElementById('last-updated');
             const tooltipTextElement = document.getElementById('tooltip-text');
+            const priceWidget = document.getElementById('price-widget');
+            const historyModal = document.getElementById('price-history-modal');
+            const closeHistoryBtn = document.getElementById('close-history-btn');
+            const historyList = document.getElementById('price-history-list');
 
             const updatePriceDisplay = (price, dateStr, source) => {
                 const formattedPrice = Math.round(price).toLocaleString('fa-IR');
@@ -254,26 +270,49 @@
                         dateStr: data.cny.date,
                         timestamp: new Date().getTime()
                     };
-                    localStorage.setItem('yuanPriceCache', JSON.stringify(priceData));
+                    
+                    let history = JSON.parse(localStorage.getItem('yuanPriceHistory')) || [];
+                    history.unshift(priceData);
+                    if (history.length > 5) history = history.slice(0, 5);
+                    localStorage.setItem('yuanPriceHistory', JSON.stringify(history));
+
                     updatePriceDisplay(priceData.price, priceData.dateStr, 'نوسان');
                 } else {
                     throw new Error('CNY price not found in Navasan response.');
                 }
             };
-
-            const fetchFromFallback = async () => {
-                 // Fallback is removed to rely solely on Navasan with cache
-                 throw new Error("Fallback disabled to preserve primary API calls.");
+            
+            const renderPriceHistory = () => {
+                const history = JSON.parse(localStorage.getItem('yuanPriceHistory')) || [];
+                if (history.length === 0) {
+                    historyList.innerHTML = `<li class="text-slate-400">تاریخچه‌ای برای نمایش وجود ندارد.</li>`;
+                    return;
+                }
+                historyList.innerHTML = history.map(item => {
+                    const formattedPrice = Math.round(item.price).toLocaleString('fa-IR');
+                    const date = new Date(item.timestamp).toLocaleString('fa-IR', { dateStyle: 'short', timeStyle: 'short'});
+                    return `<li class="flex justify-between text-slate-300 border-b border-white/10 pb-1"><span>${formattedPrice} تومان</span><span class="text-slate-500 text-xs">${date}</span></li>`;
+                }).join('');
             };
+
+            priceWidget.addEventListener('click', () => {
+                renderPriceHistory();
+                historyModal.classList.remove('hidden');
+            });
+
+            closeHistoryBtn.addEventListener('click', () => {
+                historyModal.classList.add('hidden');
+            });
             
             // --- Execution Logic with Caching ---
             const CACHE_DURATION = 4 * 60 * 60 * 1000; // 4 hours in milliseconds
-            const cachedData = JSON.parse(localStorage.getItem('yuanPriceCache'));
+            const history = JSON.parse(localStorage.getItem('yuanPriceHistory')) || [];
+            const latestCache = history[0];
             const now = new Date().getTime();
 
-            if (cachedData && (now - cachedData.timestamp < CACHE_DURATION)) {
+            if (latestCache && (now - latestCache.timestamp < CACHE_DURATION)) {
                 console.log("Using cached Yuan price from Navasan.");
-                updatePriceDisplay(cachedData.price, cachedData.dateStr, 'نوسان (کش شده)');
+                updatePriceDisplay(latestCache.price, latestCache.dateStr, 'نوسان (کش شده)');
             } else {
                 console.log("Cache is old or missing. Fetching new Yuan price.");
                 try {
@@ -281,7 +320,11 @@
                     console.log("Fetched from Navasan successfully.");
                 } catch (navasanError) {
                     console.error("Navasan API failed:", navasanError);
-                    setFallbackPrice();
+                    if(latestCache) {
+                        updatePriceDisplay(latestCache.price, latestCache.dateStr, 'نوسان (قدیمی)');
+                    } else {
+                        setFallbackPrice();
+                    }
                 }
             }
         });
@@ -289,3 +332,4 @@
 
 </body>
 </html>
+
