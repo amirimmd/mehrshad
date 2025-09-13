@@ -89,11 +89,14 @@
 </head>
 <body class="bg-slate-900 text-slate-200">
 
-    <!-- Floating Back to Services Button -->
+    <!-- Floating Navigation Buttons -->
     <a href="../../services.html" title="بازگشت به لیست دانشگاه‌ها" class="fixed top-5 left-5 z-50 glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
             <path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path>
         </svg>
+    </a>
+     <a href="../../index.html" title="بازگشت به صفحه اصلی" class="fixed top-5 right-5 z-50 glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
     </a>
 
     <!-- New LinkedIn-style Header -->
@@ -104,16 +107,42 @@
                  <img src="../../images/universities/dalian-medical/01.jpg" alt="کاور دانشگاه دالیان" class="w-full h-full object-cover">
             </div>
             <!-- Logo -->
-            <div class="absolute left-8 sm:left-12 -bottom-16">
-                 <img src="../../images/logo/dalian.png" alt="لوگوی دانشگاه دالیان" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-8 border-slate-900 bg-slate-800">
+            <div class="absolute right-8 sm:right-12 -bottom-12 sm:-bottom-16">
+                 <img src="../../images/logo/dalian.png" alt="لوگوی دانشگاه دالیان" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 sm:border-8 border-slate-900 bg-slate-800">
             </div>
         </div>
         <!-- University Name & Info -->
-        <div class="pt-20 px-4 sm:px-12">
-             <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">دانشگاه دندان‌پزشکی دالیان</h1>
-             <p class="mt-2 text-lg sm:text-xl text-cyan-300">Dalian Medical University (School of Stomatology)</p>
+        <div class="pt-16 sm:pt-20 px-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+             <div class="text-right">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">دانشگاه دندان‌پزشکی دالیان</h1>
+                <p class="mt-2 text-lg sm:text-xl text-cyan-300">Dalian Medical University (School of Stomatology)</p>
+             </div>
+             <!-- Stacked Images -->
+            <div id="gallery-preview" class="relative flex-shrink-0 w-40 h-24 sm:w-48 sm:h-28 group cursor-pointer animate-on-load delay-300">
+                <img src="../../images/universities/dalian-medical/03.jpg" alt="تصویر ۳ از دانشگاه دالیان" class="absolute top-0 right-0 w-3/4 h-full rounded-lg object-cover transition-transform duration-300 ease-in-out group-hover:translate-x-2 group-hover:-translate-y-2 group-hover:rotate-3 shadow-lg">
+                <img src="../../images/universities/dalian-medical/02.jpg" alt="تصویر ۲ از دانشگاه دالیان" class="absolute top-0 right-0 w-3/4 h-full rounded-lg object-cover transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:-rotate-2 shadow-lg">
+                <img src="../../images/universities/dalian-medical/01.jpg" alt="تصویر ۱ از دانشگاه دالیان" class="absolute top-0 right-0 w-3/4 h-full rounded-lg object-cover transition-transform duration-300 ease-in-out group-hover:-translate-x-2 group-hover:translate-y-2 group-hover:rotate-3 shadow-lg border-2 border-slate-600">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors rounded-lg flex items-center justify-center">
+                    <p class="text-white font-semibold text-sm">مشاهده گالری</p>
+                </div>
+            </div>
         </div>
     </header>
+
+    <!-- Hidden images for lightbox data source -->
+    <div id="image-gallery" class="hidden">
+        <img src="../../images/universities/dalian-medical/01.jpg" alt="تصویر ۱ از دانشگاه دالیان">
+        <img src="../../images/universities/dalian-medical/02.jpg" alt="تصویر ۲ از دانشگاه دالیان">
+        <img src="../../images/universities/dalian-medical/03.jpg" alt="تصویر ۳ از دانشگاه دالیان">
+        <img src="../../images/universities/dalian-medical/04.jpg" alt="تصویر ۴ از دانشگاه دالیان">
+        <img src="../../images/universities/dalian-medical/05.jpg" alt="تصویر ۵ از دانشگاه دالیان">
+        <img src="../../images/universities/dalian-medical/06.jpg" alt="تصویر ۶ از دانشگاه دالیان">
+        <img src="../../images/universities/dalian-medical/07.jpg" alt="تصویر ۷ از دانشگاه دالیان">
+        <img src="../../images/universities/dalian-medical/08.jpg" alt="تصویر ۸ از دانشگاه دالیان">
+        <img src="../../images/universities/dalian-medical/09.jpg" alt="تصویر ۹ از دانشگاه دالیان">
+        <img src="../../images/universities/dalian-medical/10.jpg" alt="تصویر ۱۰ از دانشگاه دالیان">
+    </div>
+
 
     <!-- Main Content -->
     <main class="relative z-10 container mx-auto px-4 py-12 sm:py-16">
@@ -141,9 +170,9 @@
             </section>
             
             <!-- Details & Requirements Section -->
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Main Details on the Left -->
-                <div class="lg:col-span-3 space-y-8">
+                <div class="space-y-8">
                      <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-600">
                         <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM16 18H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>مدارک مورد نیاز</h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-slate-300">
@@ -162,7 +191,7 @@
                     </section>
                 </div>
                 <!-- Sidebar info on the right -->
-                <div class="lg:col-span-2 space-y-8">
+                <div class="space-y-8">
                     <!-- NEW: Weather Widget -->
                     <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-700 overflow-hidden">
                         <h2 class="text-2xl font-bold text-cyan-300 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>آب و هوای دالیان</h2>
@@ -257,13 +286,13 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Lightbox functionality
-            const galleryContainer = document.getElementById('image-gallery');
-            const images = galleryContainer.querySelectorAll('img');
+            const galleryPreview = document.getElementById('gallery-preview');
+            const images = Array.from(document.querySelectorAll('#image-gallery img'));
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             let currentImageIndex = 0;
 
-            const galleryImageSources = Array.from(images).map(img => img.src);
+            const galleryImageSources = images.map(img => img.src);
 
             function openLightbox(index) {
                 currentImageIndex = index;
@@ -301,10 +330,8 @@
                 img.classList.toggle('cursor-zoom-out');
             }
 
-            images.forEach((img, index) => {
-                img.style.cursor = 'pointer';
-                img.addEventListener('click', () => openLightbox(index));
-            });
+            galleryPreview.addEventListener('click', () => openLightbox(0));
+            
 
             document.addEventListener('keydown', (e) => {
                 if (!lightbox.classList.contains('hidden')) {
