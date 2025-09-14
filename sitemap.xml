@@ -1,28 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <!-- صفحه اصلی: بالاترین اولویت -->
-  <url>
-    <loc>https://mehrshadrokni.ir/</loc>
-    <lastmod>2025-09-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.00</priority>
-  </url>
-  
-  <!-- صفحه خدمات: اولویت بالا -->
-  <url>
-    <loc>https://mehrshadrokni.ir/services.html</loc>
-    <lastmod>2025-09-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  
-  <!-- صفحه دانشگاه دالیان: اولویت بالا -->
-  <url>
-    <loc>https://mehrshadrokni.ir/pages/Medicine/dalian-medical-university.html</loc>
-    <lastmod>2025-09-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
+
+<urlset xmlns="[لینک مشکوک حذف شد]">
+
+<!-- Main Pages -->
+
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1.00</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/services.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.90</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/about.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.70</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/successful-cases.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.70</priority>
+</url>
+
+<!-- Medicine Pages -->
+
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Medicine/Capital.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Medicine/Shanghai.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Medicine/Fujian.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Medicine/Harbin.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Medicine/Jilin.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Medicine/Nanjing.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Medicine/Chongqing.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+
+<!-- Stomatology (Dentistry) Pages -->
+
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Stomatology/dalian.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Stomatology/Shanghai.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Stomatology/Nanjing.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Stomatology/Wuhan.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Stomatology/Shandong.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Stomatology/Xian.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Stomatology/Chongqing.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Stomatology/Harbin.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Stomatology/Zhengzhou.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Stomatology/Capital.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Stomatology/Southern.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Stomatology/Guangdong.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Stomatology/Fudan.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+
+<!-- Pharmaceutical Pages -->
+
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Pharmaceutical/Capital.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Pharmaceutical/Shanghai.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Pharmaceutical/Nanjing.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.google.com/search?q=https://mehrshadrokni.ir/pages/Pharmaceutical/Guangdong.html</loc>
+<lastmod>2025-09-14</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.80</priority>
+</url>
 
 </urlset>
