@@ -85,7 +85,7 @@
     <header class="container mx-auto px-4 animate-on-load delay-100">
         <div class="relative">
             <div class="h-48 sm:h-64 md:h-80 bg-slate-800 rounded-b-2xl overflow-hidden">
-                 <img src="https://placehold.co/1920x400/0f172a/38bdf8?text=Jilin+University" alt="کاور دانشگاه جیلین" class="w-full h-full object-cover">
+                 <img src="../../images/universities/Jilin/01.webp" alt="کاور دانشگاه جیلین" class="w-full h-full object-cover">
             </div>
             <div class="absolute right-8 sm:right-12 -bottom-12 sm:-bottom-16">
                  <img src="../../images/logo/Jilin.png" alt="لوگوی دانشگاه جیلین" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 sm:border-8 border-slate-900 bg-slate-800">
@@ -97,6 +97,10 @@
         </div>
     </header>
 
+    <!-- Dynamic Gallery Container (to be populated by JS) -->
+    <section id="dynamic-gallery-container" class="container mx-auto px-4 mt-8 animate-on-load delay-300"></section>
+
+
     <!-- Main Content -->
     <main class="relative z-10 container mx-auto px-4 py-12 sm:py-16">
         <div class="space-y-12">
@@ -104,7 +108,7 @@
             <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-300 shadow-2xl">
                  <h2 class="text-2xl font-bold text-cyan-300 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>معرفی دوره پزشکی (MBBS)</h2>
                 <p class="text-slate-300 leading-relaxed">
-                   دانشگاه جیلین (Jilin University) یکی از بزرگ‌ترین و معتبرترین دانشگاه‌های دولتی چین است که بخش پزشکی آن به نام Bethune Medical School شناخته می‌شود. این دانشگاه به خاطر کیفیت آموزش پزشکی و داشتن چندین بیمارستان آموزشی وابسته، جزو مقاصد محبوب دانشجویان بین‌المللی است. دوره MBBS در این دانشگاه به زبان انگلیسی ارائه می‌شود و طول دوره معمولاً ۶ سال است (۵ سال تئوری و بالینی + ۱ سال کارآموزی).
+                   دانشگاه جیلین (Jilin University) یکی از بزرگ‌ترین و معتبرترین دانشگاه‌های دولتی چین است که بخش پزشکی آن به نام Bethune Medical School شناخته می‌شود. این دانشگاه به خاطر کیفیت آموزش پزشکی و داشتن چندین بیمارستان آموزشی وابسته، جزو مقاصد محبوب دانشجویان بین‌المللی است. دوره MBBS در این دانشگاه به زبان انگلیسی ارائه می‌شود و طول دوره ۶ سال است (۵ سال تئوری و بالینی + ۱ سال کارآموزی).
                 </p>
             </section>
             
@@ -112,14 +116,11 @@
                 <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-400">
                     <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM16 18H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>مدارک مورد نیاز</h2>
                     <ul class="space-y-3 text-slate-300">
-                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>ریزنمرات ۳ سال آخر دبیرستان (ترجمه رسمی)</span></li>
-                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>مدرک دیپلم (با تأیید وزارت امور خارجه و دادگستری)</span></li>
-                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>پاسپورت معتبر (حداقل با ۱۸ ماه اعتبار)</span></li>
-                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>عکس پرسنلی</span></li>
-                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>فرم معاینه پزشکی (Health Check-up)</span></li>
-                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>مدرک زبان (IELTS/TOEFL یا HSK)</span></li>
-                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>انگیزه‌نامه (SOP)</span></li>
-                         <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>فرم درخواست دانشگاه و هزینه اپلای</span></li>
+                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>پاسپورت معتبر خارجی</span></li>
+                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>دیپلم دبیرستان با نمرات خوب (حداقل ۷۰٪)</span></li>
+                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>ریزنمرات دروس زیست‌شناسی و شیمی</span></li>
+                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>گواهی سلامت جسمی کامل</span></li>
+                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>تعهدنامه مالی</span></li>
                     </ul>
                 </section>
                 <div class="space-y-8">
@@ -129,17 +130,16 @@
                             <li class="flex justify-between items-center"><span>شهریه (MBBS):</span><strong class="text-white font-semibold">۳۳,۰۰۰ یوان</strong></li>
                             <li class="flex justify-between items-center"><span>خوابگاه:</span><strong class="text-white font-semibold">~ ۶,۰۰۰ یوان</strong></li>
                             <li class="flex justify-between items-center"><span>بیمه دانشجویی:</span><strong class="text-white font-semibold">~ ۸۰۰ یوان</strong></li>
-                             <li class="flex justify-between items-center"><span>هزینه ثبت‌نام:</span><strong class="text-white font-semibold">۶۰۰ یوان</strong></li>
-                            <li class="flex justify-between items-center pt-2 mt-2 border-t border-slate-700"><span>مجموع تقریبی:</span><strong class="text-white font-semibold">~ ۴۲,۰۰۰ یوان</strong></li>
+                             <li class="flex justify-between items-center"><span>هزینه ثبت‌نام (یکبار):</span><strong class="text-white font-semibold">~ ۱,۰۰۰ یوان</strong></li>
                         </ul>
                     </section>
                     <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-600">
                         <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>شرایط پذیرش</h2>
                         <ul class="space-y-3 text-slate-300">
-                            <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>حداقل معدل دیپلم: بالای ۱۵</span></li>
-                            <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>محدودیت سنی: ۱۸ تا ۳۰ سال</span></li>
-                            <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>داشتن مدرک زبان یا قبولی در مصاحبه</span></li>
-                            <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>سلامت کامل جسمی و روانی</span></li>
+                            <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>سن حداقل ۱۷ سال</span></li>
+                            <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>تسلط کافی به زبان انگلیسی (نیاز به مدرک آیلتس/تافل)</span></li>
+                            <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>نمرات متوسط به بالا در دبیرستان</span></li>
+                            <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>توانایی پوشش هزینه‌های تحصیل و زندگی</span></li>
                         </ul>
                     </section>
                 </div>
@@ -158,10 +158,10 @@
                         آب و هوا در چهار فصل
                     </h2>
                     <ul class="space-y-2 text-sm text-slate-300">
-                        <li><strong>بهار:</strong> خنک و معتدل (۵ تا ۲۰ درجه)</li>
-                        <li><strong>تابستان:</strong> کوتاه و خنک (۲۰ تا ۲۸ درجه)، بارندگی زیاد</li>
-                        <li><strong>پاییز:</strong> هوای خشک و سرد (۵ تا ۱۵ درجه)</li>
-                        <li><strong>زمستان:</strong> طولانی و بسیار سرد (تا منفی ۲۰ درجه)</li>
+                        <li><strong>بهار:</strong> گذار سریع از سرما به گرما، باد و بارش کم</li>
+                        <li><strong>تابستان:</strong> کوتاه اما گرم و مرطوب (۲۳ تا ۲۹ درجه)، باران شدید</li>
+                        <li><strong>پاییز:</strong> خنک و خشک، آسمان صاف (۱۰ تا ۲۰ درجه)</li>
+                        <li><strong>زمستان:</strong> طولانی و بسیار سرد (تا منفی ۲۵ درجه)، برفی و خشک</li>
                     </ul>
                 </section>
              </div>
@@ -186,9 +186,44 @@
 
         </div>
     </main>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- DYNAMIC GALLERY ---
+            const galleryContainer = document.getElementById('dynamic-gallery-container');
+            const imagePath = '../../images/universities/Jilin/';
+            
+            const checkImage = (url) => {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.onload = () => resolve(url);
+                    img.onerror = () => reject();
+                    img.src = url;
+                });
+            };
+
+            const populateGallery = async () => {
+                let html = '<div class="columns-2 md:columns-3 lg:columns-4 gap-4 [&>img:not(:first-child)]:mt-4">';
+                let i = 1;
+                while (true) {
+                    const num = i.toString().padStart(2, '0');
+                    const url = `${imagePath}${num}.webp`;
+                    try {
+                        await checkImage(url);
+                        html += `<img src="${url}" alt="تصویر ${num} از دانشگاه جیلین" class="rounded-xl gallery-image">`;
+                        i++;
+                    } catch (error) {
+                        break; // Stop when an image fails to load
+                    }
+                }
+                html += '</div>';
+                if (i > 1) { // Only show gallery if at least one image was found
+                    galleryContainer.innerHTML = html;
+                }
+            };
+            
+            populateGallery();
             
             // --- WEATHER FUNCTIONALITY ---
             
@@ -221,7 +256,7 @@
             // Weather functionality
             const fetchWeather = async () => {
                 const apiKey = "df30fc7c6634e18343884eb4bdaf3e4a";
-                const city = "Changchun"; // Updated city
+                const city = "Fuzhou"; // Updated city
                 const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=fa`;
                 const weatherWidget = document.getElementById('weather-widget');
 
@@ -288,7 +323,7 @@
                     }
                     forecastHtml += '</div></div>';
 
-                    weatherWidget.innerHTML = forecastHtml.replace('<div class="text-sm text-slate-400">امروز</div>', '<div class="text-sm text-cyan-300">امروز</div>');
+                    weatherWidget.innerHTML = todayHtml + forecastHtml;
 
                 } catch (error) {
                     console.error("Failed to fetch weather:", error);
@@ -301,5 +336,4 @@
     </script>
 </body>
 </html>
-
 
