@@ -17,20 +17,28 @@
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Vazirmatn -->
+    <!-- Google Fonts: Playfair Display & Noto Sans Arabic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Noto+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         /* Applying custom fonts and base styles */
+        html {
+            scroll-behavior: smooth;
+        }
         body {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'Noto Sans Arabic', sans-serif;
             overflow-x: hidden; /* Prevent horizontal scroll */
             background: linear-gradient(-45deg, #020617, #1e3a8a, #0891b2, #111827);
             background-size: 400% 400%;
             animation: gradientBG 20s ease infinite;
         }
+        
+        h1, .accordion-header h2 {
+           font-family: 'Playfair Display', serif;
+        }
+
 
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -117,23 +125,59 @@
         .logo-engineering { filter: drop-shadow(0 0 3px rgba(251, 113, 133, 0.7)) drop-shadow(0 0 8px rgba(251, 113, 133, 0.5)) brightness(1.2); }
         .glass-card-engineering:hover .logo-engineering { filter: drop-shadow(0 0 5px rgba(251, 113, 133, 1)) drop-shadow(0 0 15px rgba(251, 113, 133, 0.7)) brightness(1.3); }
 
-        /* Clock Styles */
+        /* Liquid Glass Clock Styles */
         .clock-card {
-            padding: 0.5rem 1rem;
-            border-radius: 0.75rem;
+            position: relative;
+            padding: 1rem;
+            border-radius: 1.5rem; /* More rounded */
             display: flex;
+            flex-direction: column; /* Vertical layout */
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            width: 150px;
         }
+
+        .clock-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(56, 189, 248, 0.15) 50%, rgba(255,255,255,0) 70%);
+            animation: rotate 15s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .clock-card img {
+            width: 2.5rem; /* 40px */
+            height: auto;
+            border-radius: 0.25rem;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
         .clock-time {
-            font-size: 1.25rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: white;
-            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+            text-shadow: 0 0 8px rgba(255,255,255,0.7);
             direction: ltr;
         }
         .clock-country {
-            font-size: 0.8rem;
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 0.875rem;
             color: #d1d5db; /* slate-300 */
         }
         
@@ -182,7 +226,7 @@
 
     <!-- Floating Back to Home Button -->
     <a href="index.html" title="بازگشت به صفحه اصلی" class="fixed top-5 left-5 z-50 glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
             <path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path>
         </svg>
     </a>
@@ -193,23 +237,19 @@
         <header class="text-center mb-12 sm:mb-16">
             <div class="flex justify-around md:justify-between items-center w-full max-w-6xl mx-auto mb-6 px-4">
                 <!-- Iran Clock -->
-                <div class="glass-effect clock-card animate-on-load delay-300">
-                    <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران" class="w-8 h-auto rounded-sm">
-                    <div>
-                        <div id="iran-time" class="clock-time">00:00:00</div>
-                        <div class="clock-country">ایران</div>
-                    </div>
+                <div class="clock-card animate-on-load delay-300">
+                    <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران">
+                    <div id="iran-time" class="clock-time">00:00:00</div>
+                    <div class="clock-country">ایران</div>
                 </div>
 
                 <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-wider animate-on-load delay-100 mx-4" style="text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);">دانشگاه‌های برتر چین</h1>
 
                 <!-- China Clock -->
-                <div class="glass-effect clock-card animate-on-load delay-300">
-                    <img src="https://flagcdn.com/w40/cn.png" alt="پرچم چین" class="w-8 h-auto rounded-sm">
-                    <div>
-                        <div id="china-time" class="clock-time">00:00:00</div>
-                        <div class="clock-country">چین</div>
-                    </div>
+                <div class="clock-card animate-on-load delay-300">
+                    <img src="https://flagcdn.com/w40/cn.png" alt="پرچم چین">
+                    <div id="china-time" class="clock-time">00:00:00</div>
+                    <div class="clock-country">چین</div>
                 </div>
             </div>
             
@@ -458,7 +498,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
                             مشاوره در تلگرام
                         </a>
-                        <a href="https://t.me/mehrshad_cn" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 rounded-full bg-sky-500/80 hover:bg-sky-500 text-white font-semibold px-8 py-3 text-lg shadow-lg shadow-sky-500/20 transition-all hover:scale-105 w-full sm:w-auto justify-center">
+                        <a href="https.me/mehrshad_cn" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 rounded-full bg-sky-500/80 hover:bg-sky-500 text-white font-semibold px-8 py-3 text-lg shadow-lg shadow-sky-500/20 transition-all hover:scale-105 w-full sm:w-auto justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
                             عضویت در کانال تلگرام
                         </a>
@@ -477,7 +517,7 @@
 
             function updateClocks() {
                 // Iran Time (Tehran)
-                const iranTime = new Date().toLocaleTimeString('fa-IR', {
+                const iranTime = new Date().toLocaleTimeString('en-GB', {
                     timeZone: 'Asia/Tehran',
                     hour: '2-digit',
                     minute: '2-digit',
