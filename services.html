@@ -99,7 +99,7 @@
             overflow: hidden;
         }
         
-        /* NEW STYLES FOR LOGOS */
+        /* Logo Styles */
         .logo-image {
             width: 40px;
             height: 40px;
@@ -108,33 +108,66 @@
             margin-bottom: 0.5rem;
             transition: filter 0.3s ease-in-out;
         }
+        .logo-medicine { filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0.7)) drop-shadow(0 0 8px rgba(56, 189, 248, 0.5)) brightness(1.2); }
+        .glass-card-medicine:hover .logo-medicine { filter: drop-shadow(0 0 5px rgba(56, 189, 248, 1)) drop-shadow(0 0 15px rgba(56, 189, 248, 0.7)) brightness(1.3); }
+        .logo-dentistry { filter: drop-shadow(0 0 3px rgba(45, 212, 191, 0.7)) drop-shadow(0 0 8px rgba(45, 212, 191, 0.5)) brightness(1.2); }
+        .glass-card-dentistry:hover .logo-dentistry { filter: drop-shadow(0 0 5px rgba(45, 212, 191, 1)) drop-shadow(0 0 15px rgba(45, 212, 191, 0.7)) brightness(1.3); }
+        .logo-pharmacy { filter: drop-shadow(0 0 3px rgba(139, 92, 246, 0.7)) drop-shadow(0 0 8px rgba(139, 92, 246, 0.5)) brightness(1.2); }
+        .glass-card-pharmacy:hover .logo-pharmacy { filter: drop-shadow(0 0 5px rgba(139, 92, 246, 1)) drop-shadow(0 0 15px rgba(139, 92, 246, 0.7)) brightness(1.3); }
+        .logo-engineering { filter: drop-shadow(0 0 3px rgba(251, 113, 133, 0.7)) drop-shadow(0 0 8px rgba(251, 113, 133, 0.5)) brightness(1.2); }
+        .glass-card-engineering:hover .logo-engineering { filter: drop-shadow(0 0 5px rgba(251, 113, 133, 1)) drop-shadow(0 0 15px rgba(251, 113, 133, 0.7)) brightness(1.3); }
 
-        .logo-medicine {
-            filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0.7)) drop-shadow(0 0 8px rgba(56, 189, 248, 0.5)) brightness(1.2);
+        /* Clock Styles */
+        .clock-card {
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
-        .glass-card-medicine:hover .logo-medicine {
-            filter: drop-shadow(0 0 5px rgba(56, 189, 248, 1)) drop-shadow(0 0 15px rgba(56, 189, 248, 0.7)) brightness(1.3);
+        .clock-time {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+            direction: ltr;
         }
-
-        .logo-dentistry {
-            filter: drop-shadow(0 0 3px rgba(45, 212, 191, 0.7)) drop-shadow(0 0 8px rgba(45, 212, 191, 0.5)) brightness(1.2);
+        .clock-country {
+            font-size: 0.8rem;
+            color: #d1d5db; /* slate-300 */
         }
-        .glass-card-dentistry:hover .logo-dentistry {
-            filter: drop-shadow(0 0 5px rgba(45, 212, 191, 1)) drop-shadow(0 0 15px rgba(45, 212, 191, 0.7)) brightness(1.3);
+        
+        /* Logo Marquee Styles */
+        .logo-marquee {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin-top: 1.5rem;
+            padding: 1rem 0;
+            -webkit-mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+            mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
         }
-
-        .logo-pharmacy {
-            filter: drop-shadow(0 0 3px rgba(139, 92, 246, 0.7)) drop-shadow(0 0 8px rgba(139, 92, 246, 0.5)) brightness(1.2);
+        .logo-marquee-content {
+            display: flex;
+            width: fit-content;
+            animation: scroll 60s linear infinite;
         }
-        .glass-card-pharmacy:hover .logo-pharmacy {
-            filter: drop-shadow(0 0 5px rgba(139, 92, 246, 1)) drop-shadow(0 0 15px rgba(139, 92, 246, 0.7)) brightness(1.3);
+        .logo-marquee-content:hover {
+            animation-play-state: paused;
         }
-
-        .logo-engineering {
-            filter: drop-shadow(0 0 3px rgba(251, 113, 133, 0.7)) drop-shadow(0 0 8px rgba(251, 113, 133, 0.5)) brightness(1.2);
+        .logo-marquee-content img {
+            height: 32px;
+            margin: 0 2rem;
+            filter: grayscale(1) opacity(0.5);
+            transition: all 0.3s ease;
         }
-        .glass-card-engineering:hover .logo-engineering {
-            filter: drop-shadow(0 0 5px rgba(251, 113, 133, 1)) drop-shadow(0 0 15px rgba(251, 113, 133, 0.7)) brightness(1.3);
+        .logo-marquee-content img:hover {
+            filter: grayscale(0) opacity(1);
+            transform: scale(1.1);
+        }
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
 
     </style>
@@ -158,10 +191,69 @@
     <main class="relative z-10 container mx-auto px-4 py-16 sm:py-24">
         
         <header class="text-center mb-12 sm:mb-16">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-wider animate-on-load delay-100" style="text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);">دانشگاه‌های برتر چین</h1>
+            <div class="flex justify-around md:justify-between items-center w-full max-w-6xl mx-auto mb-6 px-4">
+                <!-- Iran Clock -->
+                <div class="glass-effect clock-card animate-on-load delay-300">
+                    <img src="https://flagcdn.com/w40/ir.png" alt="پرچم ایران" class="w-8 h-auto rounded-sm">
+                    <div>
+                        <div id="iran-time" class="clock-time">00:00:00</div>
+                        <div class="clock-country">ایران</div>
+                    </div>
+                </div>
+
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-wider animate-on-load delay-100 mx-4" style="text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);">دانشگاه‌های برتر چین</h1>
+
+                <!-- China Clock -->
+                <div class="glass-effect clock-card animate-on-load delay-300">
+                    <img src="https://flagcdn.com/w40/cn.png" alt="پرچم چین" class="w-8 h-auto rounded-sm">
+                    <div>
+                        <div id="china-time" class="clock-time">00:00:00</div>
+                        <div class="clock-country">چین</div>
+                    </div>
+                </div>
+            </div>
+            
             <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto animate-on-load delay-200">
                 لیست دانشگاه‌های معتبر در رشته‌های مختلف، مورد تأیید برای دانشجویان بین‌المللی
             </p>
+            
+            <!-- Logo Marquee -->
+            <div class="logo-marquee animate-on-load delay-400">
+                <div class="logo-marquee-content">
+                    <img src="images/logo/Capital.png" alt="Capital University Logo">
+                    <img src="images/logo/Shanghai.png" alt="Shanghai Jiao Tong University Logo">
+                    <img src="images/logo/Fujian.png" alt="Fujian University Logo">
+                    <img src="images/logo/Harbin.png" alt="Harbin University Logo">
+                    <img src="images/logo/Jilin.png" alt="Jilin University Logo">
+                    <img src="images/logo/Nanjing.png" alt="Nanjing University Logo">
+                    <img src="images/logo/Chongqing.png" alt="Chongqing University Logo">
+                    <img src="images/logo/dalian.png" alt="Dalian University Logo">
+                    <img src="images/logo/Wuhan.png" alt="Wuhan University Logo">
+                    <img src="images/logo/SHANDONG.png" alt="Shandong University Logo">
+                    <img src="images/logo/Xi'an.png" alt="Xi'an University Logo">
+                    <img src="images/logo/Zhengzhou.png" alt="Zhengzhou University Logo">
+                    <img src="images/logo/Southern.png" alt="Southern University Logo">
+                    <img src="images/logo/Guangdong.png" alt="Guangdong University Logo">
+                    <img src="images/logo/Fudan.png" alt="Fudan University Logo">
+                    <!-- Duplicated for seamless loop -->
+                    <img src="images/logo/Capital.png" alt="Capital University Logo">
+                    <img src="images/logo/Shanghai.png" alt="Shanghai Jiao Tong University Logo">
+                    <img src="images/logo/Fujian.png" alt="Fujian University Logo">
+                    <img src="images/logo/Harbin.png" alt="Harbin University Logo">
+                    <img src="images/logo/Jilin.png" alt="Jilin University Logo">
+                    <img src="images/logo/Nanjing.png" alt="Nanjing University Logo">
+                    <img src="images/logo/Chongqing.png" alt="Chongqing University Logo">
+                    <img src="images/logo/dalian.png" alt="Dalian University Logo">
+                    <img src="images/logo/Wuhan.png" alt="Wuhan University Logo">
+                    <img src="images/logo/SHANDONG.png" alt="Shandong University Logo">
+                    <img src="images/logo/Xi'an.png" alt="Xi'an University Logo">
+                    <img src="images/logo/Zhengzhou.png" alt="Zhengzhou University Logo">
+                    <img src="images/logo/Southern.png" alt="Southern University Logo">
+                    <img src="images/logo/Guangdong.png" alt="Guangdong University Logo">
+                    <img src="images/logo/Fudan.png" alt="Fudan University Logo">
+                </div>
+            </div>
+
         </header>
 
         <div class="max-w-4xl mx-auto space-y-6">
@@ -380,6 +472,34 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const iranTimeElement = document.getElementById('iran-time');
+            const chinaTimeElement = document.getElementById('china-time');
+
+            function updateClocks() {
+                // Iran Time (Tehran)
+                const iranTime = new Date().toLocaleTimeString('fa-IR', {
+                    timeZone: 'Asia/Tehran',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                });
+                iranTimeElement.textContent = iranTime;
+
+                // China Time (Shanghai)
+                const chinaTime = new Date().toLocaleTimeString('en-GB', { // Using en-GB for 24h format
+                    timeZone: 'Asia/Shanghai',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                });
+                chinaTimeElement.textContent = chinaTime;
+            }
+
+            updateClocks();
+            setInterval(updateClocks, 1000);
+
             const accordions = document.querySelectorAll('.accordion-header');
 
             accordions.forEach(header => {
