@@ -17,14 +17,14 @@
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Vazirmatn -->
+    <!-- Google Fonts: Amiri (Classic Font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         body {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'Amiri', serif;
             overflow-x: hidden;
             background-color: #0c0a09; /* Richer Black */
         }
@@ -63,26 +63,79 @@
         .delay-400 { animation-delay: 400ms; }
         .delay-500 { animation-delay: 500ms; }
         
-        .thumbnail {
+        .main-image-gallery {
             cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            border-radius: 0.5rem;
-        }
-        .thumbnail:hover {
-            border-color: rgba(234, 179, 8, 0.5);
-            transform: scale(1.05);
-        }
-        .thumbnail.active {
-            border-color: #eab308;
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(234, 179, 8, 0.5);
-        }
-        .main-image {
-            transition: opacity 0.3s ease-in-out;
         }
         .gold-glow {
             filter: drop-shadow(0 0 15px rgba(234, 179, 8, 0.4));
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .modal-prev, .modal-next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .modal-next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .modal-prev {
+            left: 0;
+        }
+        .modal-prev:hover, .modal-next:hover {
+            background-color: rgba(234, 179, 8, 0.2);
+        }
+        #caption {
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+            position: absolute;
+            bottom: -80px;
+            width: 100%;
         }
     </style>
 </head>
@@ -103,8 +156,8 @@
     <main class="relative z-10 container mx-auto px-4 py-16 sm:py-24">
         
         <header class="text-center mb-12 sm:mb-16">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold gold-text-gradient tracking-wider animate-on-load delay-100">پرونده‌های موفق</h1>
-            <p class="mt-4 text-lg text-stone-400 max-w-2xl mx-auto animate-on-load delay-200">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold gold-text-gradient tracking-wider animate-on-load delay-100">پرونده‌های موفق</h1>
+            <p class="mt-6 text-xl text-stone-400 max-w-2xl mx-auto animate-on-load delay-200">
                 نمونه‌هایی از اعتماد شما و موفقیت دانشجویان ما در اخذ پذیرش از دانشگاه‌های برتر چین
             </p>
         </header>
@@ -118,30 +171,27 @@
                     <a href="https://www.mehrshadrokni.ir/pages/Stomatology/dalian.html" class="block group">
                         <img src="../images/logo/dalian.png" alt="لوگوی دانشگاه دالیان" class="absolute -top-12 sm:-top-14 right-1/2 transform translate-x-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-stone-800 bg-stone-900 transition-transform duration-300 group-hover:scale-110">
                         <div class="pt-12 sm:pt-14 text-center">
-                            <h3 class="text-xl sm:text-2xl font-bold text-white">دانشگاه دالیان</h3>
-                            <p class="text-md sm:text-lg text-amber-400 mt-1">Dalian Medical University</p>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white">دانشگاه دالیان</h3>
+                            <p class="text-lg sm:text-xl text-amber-400 mt-1">Dalian Medical University</p>
                         </div>
                     </a>
                 </div>
                 <!-- Card Body -->
                 <div class="mt-4 flex-grow" data-case-id="dalian" data-images='["../images/cases/01/01.webp", "../images/cases/01/02.webp", "../images/cases/01/03.webp", "../images/cases/01/04.webp"]'>
-                    <img src="../images/cases/01/01.webp" alt="نامه پذیرش دانشگاه دالیان" class="main-image w-full h-auto object-contain rounded-lg mb-3 border border-stone-700">
-                    <div class="thumbnail-container flex justify-center gap-2 flex-wrap"></div>
+                    <img src="../images/cases/01/01.webp" alt="نامه پذیرش دانشگاه دالیان" class="main-image-gallery w-full h-auto object-contain rounded-lg mb-3 border border-stone-700">
                 </div>
                 <!-- Card Footer -->
                 <div class="mt-auto pt-4 border-t border-amber-500/10">
                     <div class="text-center mb-4">
-                        <p class="text-md sm:text-lg font-semibold text-stone-300">رشته: <span class="font-bold text-white">دندان‌پزشکی</span></p>
-                        <p class="text-sm text-stone-400 mt-1">سال پذیرش: <span class="font-semibold text-stone-300">۲۰۲۴</span></p>
+                        <p class="text-lg sm:text-xl font-semibold text-stone-300">رشته: <span class="font-bold text-white">دندان‌پزشکی</span></p>
+                        <p class="text-base text-stone-400 mt-1">سال پذیرش: <span class="font-semibold text-stone-300">۲۰۲۴</span></p>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <a href="https://www.mehrshadrokni.ir/pages/Stomatology/dalian.html" class="w-full text-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold px-4 py-2 text-sm sm:text-base transition-all hover:scale-105 shadow-lg shadow-yellow-500/20">شرایط پذیرش</a>
-                        <a href="tg://resolve?domain=mehrshaw" class="w-full text-center rounded-lg bg-stone-800/70 hover:bg-stone-700/90 text-stone-300 font-medium px-4 py-1.5 transition-all text-xs sm:text-sm">دریافت مشاوره</a>
+                        <a href="https://www.mehrshadrokni.ir/pages/Stomatology/dalian.html" class="w-full text-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold px-4 py-2 text-base sm:text-lg transition-all hover:scale-105 shadow-lg shadow-yellow-500/20">شرایط پذیرش</a>
+                        <a href="tg://resolve?domain=mehrshaw" class="w-full text-center rounded-lg bg-stone-800/70 hover:bg-stone-700/90 text-stone-300 font-medium px-4 py-1.5 transition-all text-sm sm:text-base">دریافت مشاوره</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- All other cards will follow the same new structure -->
             
             <!-- Case 2 -->
              <div class="glass-card rounded-2xl p-4 sm:p-6 animate-on-load delay-400">
@@ -149,8 +199,8 @@
                      <a href="https://www.mehrshadrokni.ir/pages/Medicine/Dalian.html" class="block group">
                         <img src="../images/logo/dalian.png" alt="لوگوی دانشگاه دالیان" class="absolute -top-12 sm:-top-14 right-1/2 transform translate-x-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-stone-800 bg-stone-900 transition-transform duration-300 group-hover:scale-110">
                         <div class="pt-12 sm:pt-14 text-center">
-                            <h3 class="text-xl sm:text-2xl font-bold text-white">دانشگاه دالیان</h3>
-                            <p class="text-md sm:text-lg text-amber-400 mt-1">Dalian Medical University</p>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white">دانشگاه دالیان</h3>
+                            <p class="text-lg sm:text-xl text-amber-400 mt-1">Dalian Medical University</p>
                         </div>
                     </a>
                 </div>
@@ -159,24 +209,24 @@
                 </div>
                  <div class="mt-auto pt-4 border-t border-amber-500/10">
                     <div class="text-center mb-4">
-                        <p class="text-md sm:text-lg font-semibold text-stone-300">رشته: <span class="font-bold text-white">پزشکی</span></p>
-                        <p class="text-sm text-stone-400 mt-1">سال پذیرش: <span class="font-semibold text-stone-300">۲۰۲۴</span></p>
+                        <p class="text-lg sm:text-xl font-semibold text-stone-300">رشته: <span class="font-bold text-white">پزشکی</span></p>
+                        <p class="text-base text-stone-400 mt-1">سال پذیرش: <span class="font-semibold text-stone-300">۲۰۲۴</span></p>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <a href="https://www.mehrshadrokni.ir/pages/Medicine/Dalian.html" class="w-full text-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold px-4 py-2 text-sm sm:text-base transition-all hover:scale-105 shadow-lg shadow-yellow-500/20">شرایط پذیرش</a>
-                        <a href="tg://resolve?domain=mehrshaw" class="w-full text-center rounded-lg bg-stone-800/70 hover:bg-stone-700/90 text-stone-300 font-medium px-4 py-1.5 transition-all text-xs sm:text-sm">دریافت مشاوره</a>
+                        <a href="https://www.mehrshadrokni.ir/pages/Medicine/Dalian.html" class="w-full text-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold px-4 py-2 text-base sm:text-lg transition-all hover:scale-105 shadow-lg shadow-yellow-500/20">شرایط پذیرش</a>
+                        <a href="tg://resolve?domain=mehrshaw" class="w-full text-center rounded-lg bg-stone-800/70 hover:bg-stone-700/90 text-stone-300 font-medium px-4 py-1.5 transition-all text-sm sm:text-base">دریافت مشاوره</a>
                     </div>
                 </div>
             </div>
             
-            <!-- Case 3 -->
+            <!-- Other Cases... -->
             <div class="glass-card rounded-2xl p-4 sm:p-6 animate-on-load delay-500">
                 <div class="relative w-full">
                     <a href="https://www.mehrshadrokni.ir/pages/Stomatology/dalian.html" class="block group">
                         <img src="../images/logo/dalian.png" alt="لوگوی دانشگاه دالیان" class="absolute -top-12 sm:-top-14 right-1/2 transform translate-x-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-stone-800 bg-stone-900 transition-transform duration-300 group-hover:scale-110">
                         <div class="pt-12 sm:pt-14 text-center">
-                            <h3 class="text-xl sm:text-2xl font-bold text-white">دانشگاه دالیان</h3>
-                            <p class="text-md sm:text-lg text-amber-400 mt-1">Dalian Medical University</p>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white">دانشگاه دالیان</h3>
+                            <p class="text-lg sm:text-xl text-amber-400 mt-1">Dalian Medical University</p>
                         </div>
                     </a>
                 </div>
@@ -185,173 +235,149 @@
                 </div>
                 <div class="mt-auto pt-4 border-t border-amber-500/10">
                     <div class="text-center mb-4">
-                        <p class="text-md sm:text-lg font-semibold text-stone-300">رشته: <span class="font-bold text-white">دندانپزشکی</span></p>
-                        <p class="text-sm text-stone-400 mt-1">سال پذیرش: <span class="font-semibold text-stone-300">۲۰۲۴</span></p>
+                        <p class="text-lg sm:text-xl font-semibold text-stone-300">رشته: <span class="font-bold text-white">دندانپزشکی</span></p>
+                        <p class="text-base text-stone-400 mt-1">سال پذیرش: <span class="font-semibold text-stone-300">۲۰۲۴</span></p>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <a href="https://www.mehrshadrokni.ir/pages/Stomatology/dalian.html" class="w-full text-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold px-4 py-2 text-sm sm:text-base transition-all hover:scale-105 shadow-lg shadow-yellow-500/20">شرایط پذیرش</a>
-                        <a href="tg://resolve?domain=mehrshaw" class="w-full text-center rounded-lg bg-stone-800/70 hover:bg-stone-700/90 text-stone-300 font-medium px-4 py-1.5 transition-all text-xs sm:text-sm">دریافت مشاوره</a>
+                        <a href="https://www.mehrshadrokni.ir/pages/Stomatology/dalian.html" class="w-full text-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold px-4 py-2 text-base sm:text-lg transition-all hover:scale-105 shadow-lg shadow-yellow-500/20">شرایط پذیرش</a>
+                        <a href="tg://resolve?domain=mehrshaw" class="w-full text-center rounded-lg bg-stone-800/70 hover:bg-stone-700/90 text-stone-300 font-medium px-4 py-1.5 transition-all text-sm sm:text-base">دریافت مشاوره</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- Other Cases... -->
-            <div class="glass-card rounded-2xl p-4 sm:p-6 animate-on-load delay-300">
-                <div class="relative w-full">
-                    <a href="https://www.mehrshadrokni.ir/pages/Stomatology/dalian.html" class="block group">
-                        <img src="../images/logo/dalian.png" alt="لوگوی دانشگاه دالیان" class="absolute -top-12 sm:-top-14 right-1/2 transform translate-x-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-stone-800 bg-stone-900 transition-transform duration-300 group-hover:scale-110">
-                        <div class="pt-12 sm:pt-14 text-center">
-                            <h3 class="text-xl sm:text-2xl font-bold text-white">دانشگاه دالیان</h3>
-                            <p class="text-md sm:text-lg text-amber-400 mt-1">Dalian Medical University</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="mt-4 flex-grow">
-                    <img src="../images/cases/04/01.webp" alt="نامه پذیرش دندانپزشکی دانشگاه دالیان" class="w-full h-auto object-contain rounded-lg border border-stone-700">
-                </div>
-                <div class="mt-auto pt-4 border-t border-amber-500/10">
-                    <div class="text-center mb-4">
-                        <p class="text-md sm:text-lg font-semibold text-stone-300">رشته: <span class="font-bold text-white">دندانپزشکی</span></p>
-                        <p class="text-sm text-stone-400 mt-1">سال پذیرش: <span class="font-semibold text-stone-300">۲۰۲۴</span></p>
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <a href="https://www.mehrshadrokni.ir/pages/Stomatology/dalian.html" class="w-full text-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold px-4 py-2 text-sm sm:text-base transition-all hover:scale-105 shadow-lg shadow-yellow-500/20">شرایط پذیرش</a>
-                        <a href="tg://resolve?domain=mehrshaw" class="w-full text-center rounded-lg bg-stone-800/70 hover:bg-stone-700/90 text-stone-300 font-medium px-4 py-1.5 transition-all text-xs sm:text-sm">دریافت مشاوره</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card rounded-2xl p-4 sm:p-6 animate-on-load delay-400">
-                <div class="relative w-full">
-                     <a href="https://www.mehrshadrokni.ir/pages/Stomatology/dalian.html" class="block group">
-                        <img src="../images/logo/dalian.png" alt="لوگوی دانشگاه دالیان" class="absolute -top-12 sm:-top-14 right-1/2 transform translate-x-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-stone-800 bg-stone-900 transition-transform duration-300 group-hover:scale-110">
-                        <div class="pt-12 sm:pt-14 text-center">
-                            <h3 class="text-xl sm:text-2xl font-bold text-white">دانشگاه دالیان</h3>
-                            <p class="text-md sm:text-lg text-amber-400 mt-1">Dalian Medical University</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="mt-4 flex-grow">
-                    <img src="../images/cases/05/01.webp" alt="نامه پذیرش دندانپزشکی دانشگاه دالیان" class="w-full h-auto object-contain rounded-lg border border-stone-700">
-                </div>
-                <div class="mt-auto pt-4 border-t border-amber-500/10">
-                    <div class="text-center mb-4">
-                        <p class="text-md sm:text-lg font-semibold text-stone-300">رشته: <span class="font-bold text-white">دندانپزشکی</span></p>
-                        <p class="text-sm text-stone-400 mt-1">سال پذیرش: <span class="font-semibold text-stone-300">۲۰۲۴</span></p>
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <a href="https://www.mehrshadrokni.ir/pages/Stomatology/dalian.html" class="w-full text-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold px-4 py-2 text-sm sm:text-base transition-all hover:scale-105 shadow-lg shadow-yellow-500/20">شرایط پذیرش</a>
-                        <a href="tg://resolve?domain=mehrshaw" class="w-full text-center rounded-lg bg-stone-800/70 hover:bg-stone-700/90 text-stone-300 font-medium px-4 py-1.5 transition-all text-xs sm:text-sm">دریافت مشاوره</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card rounded-2xl p-4 sm:p-6 animate-on-load delay-500">
-                <div class="relative w-full">
-                     <a href="https://www.mehrshadrokni.ir/pages/Medicine/Dalian.html" class="block group">
-                        <img src="../images/logo/dalian.png" alt="لوگوی دانشگاه دالیان" class="absolute -top-12 sm:-top-14 right-1/2 transform translate-x-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-stone-800 bg-stone-900 transition-transform duration-300 group-hover:scale-110">
-                        <div class="pt-12 sm:pt-14 text-center">
-                            <h3 class="text-xl sm:text-2xl font-bold text-white">دانشگاه دالیان</h3>
-                            <p class="text-md sm:text-lg text-amber-400 mt-1">Dalian Medical University</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="mt-4 flex-grow">
-                    <img src="../images/cases/06/01.webp" alt="نامه پذیرش پزشکی دانشگاه دالیان" class="w-full h-auto object-contain rounded-lg border border-stone-700">
-                </div>
-                <div class="mt-auto pt-4 border-t border-amber-500/10">
-                    <div class="text-center mb-4">
-                        <p class="text-md sm:text-lg font-semibold text-stone-300">رشته: <span class="font-bold text-white">پزشکی</span></p>
-                        <p class="text-sm text-stone-400 mt-1">سال پذیرش: <span class="font-semibold text-stone-300">۲۰۲۴</span></p>
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <a href="https://www.mehrshadrokni.ir/pages/Medicine/Dalian.html" class="w-full text-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold px-4 py-2 text-sm sm:text-base transition-all hover:scale-105 shadow-lg shadow-yellow-500/20">شرایط پذیرش</a>
-                        <a href="tg://resolve?domain=mehrshaw" class="w-full text-center rounded-lg bg-stone-800/70 hover:bg-stone-700/90 text-stone-300 font-medium px-4 py-1.5 transition-all text-xs sm:text-sm">دریافت مشاوره</a>
-                    </div>
-                </div>
-            </div>
-            
             <div class="glass-card rounded-2xl p-4 sm:p-6 animate-on-load delay-300">
                 <div class="text-center pt-5">
-                    <h3 class="text-xl sm:text-2xl font-bold text-white">دانشگاه جیانگسو</h3>
-                    <p class="text-md sm:text-lg text-amber-400 mt-1">Jiangsu University</p>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">دانشگاه جیانگسو</h3>
+                    <p class="text-lg sm:text-xl text-amber-400 mt-1">Jiangsu University</p>
                 </div>
                 <div class="mt-4 flex-grow">
                     <img src="../images/cases/15/01.webp" alt="نامه پذیرش پریمدیکال دانشگاه جیانگسو" class="mt-6 w-full h-auto object-contain rounded-lg border border-stone-700">
                 </div>
                 <div class="mt-auto pt-4 border-t border-amber-500/10">
                     <div class="text-center mb-4">
-                        <p class="text-md sm:text-lg font-semibold text-stone-300">رشته: <span class="font-bold text-white">پریمدیکال</span></p>
-                        <p class="text-sm text-stone-400 mt-1">سال پذیرش: <span class="font-semibold text-stone-300">۲۰۲۴</span></p>
+                        <p class="text-lg sm:text-xl font-semibold text-stone-300">رشته: <span class="font-bold text-white">پریمدیکال</span></p>
+                        <p class="text-base text-stone-400 mt-1">سال پذیرش: <span class="font-semibold text-stone-300">۲۰۲۴</span></p>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <a href="tg://resolve?domain=mehrshaw" class="w-full text-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold px-4 py-2 text-sm sm:text-base transition-all hover:scale-105 shadow-lg shadow-yellow-500/20">شرایط پذیرش</a>
-                        <a href="tg://resolve?domain=mehrshaw" class="w-full text-center rounded-lg bg-stone-800/70 hover:bg-stone-700/90 text-stone-300 font-medium px-4 py-1.5 transition-all text-xs sm:text-sm">دریافت مشاوره</a>
+                        <a href="tg://resolve?domain=mehrshaw" class="w-full text-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold px-4 py-2 text-base sm:text-lg transition-all hover:scale-105 shadow-lg shadow-yellow-500/20">شرایط پذیرش</a>
+                        <a href="tg://resolve?domain=mehrshaw" class="w-full text-center rounded-lg bg-stone-800/70 hover:bg-stone-700/90 text-stone-300 font-medium px-4 py-1.5 transition-all text-sm sm:text-base">دریافت مشاوره</a>
                     </div>
                 </div>
             </div>
-
-            <!-- More cases would be added here in the same format -->
 
         </div>
         
         <!-- Support & Telegram Section -->
-        <section class="mt-20 animate-on-load delay-500">
-            <div class="glass-card rounded-2xl p-8 md:p-10 text-center">
-                <h2 class="text-3xl font-bold text-white mb-4 flex items-center justify-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-amber-400 gold-glow" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-                    مسیر موفقیت شما از اینجا شروع می‌شود
-                </h2>
-                <p class="text-stone-300 leading-relaxed max-w-2xl mx-auto mb-8">
-                    برای دریافت مشاوره رایگان، پاسخ به سوالات و شروع فرآیند پذیرش، می‌توانید به صورت مستقیم از طریق تلگرام با ما در ارتباط باشید و یا به کانال تلگرام ما بپیوندید تا از آخرین اخبار و فرصت‌ها مطلع شوید.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="tg://resolve?domain=mehrshaw" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold px-8 py-3 text-lg shadow-lg shadow-yellow-500/20 transition-all hover:scale-105 w-full sm:w-auto justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
-                        ارتباط با پشتیبانی
-                    </a>
-                    <a href="https://t.me/mehrshad_cn" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-stone-800/70 border border-stone-700 px-6 py-2.5 text-base text-stone-300/90 hover:text-white hover:bg-stone-700/90 shadow-lg transition-transform hover:scale-105 w-full sm:w-auto justify-center">
-                        عضویت در کانال تلگرام
-                    </a>
+        <section class="mt-20 text-center animate-on-load delay-500">
+            <div class="inline-block p-2 border border-amber-500/20 rounded-2xl">
+                 <div class="glass-card rounded-xl p-8 md:p-10">
+                    <h2 class="text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-amber-400 gold-glow" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                        مسیر موفقیت شما از اینجا شروع می‌شود
+                    </h2>
+                    <p class="text-stone-300 text-xl leading-relaxed max-w-2xl mx-auto my-8">
+                        برای دریافت مشاوره رایگان، پاسخ به سوالات و شروع فرآیند پذیرش، می‌توانید به صورت مستقیم از طریق تلگرام با ما در ارتباط باشید و یا به کانال تلگرام ما بپیوندید تا از آخرین اخبار و فرصت‌ها مطلع شوید.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="tg://resolve?domain=mehrshaw" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold px-8 py-3 text-lg shadow-lg shadow-yellow-500/20 transition-all hover:scale-105 w-full sm:w-auto justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+                            ارتباط با پشتیبانی
+                        </a>
+                        <a href="https://t.me/mehrshad_cn" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-stone-800/70 border border-stone-700 px-6 py-2.5 text-base text-stone-300/90 hover:text-white hover:bg-stone-700/90 shadow-lg transition-transform hover:scale-105 w-full sm:w-auto justify-center">
+                            عضویت در کانال تلگرام
+                        </a>
+                    </div>
                 </div>
-                 <p class="text-xs text-stone-500 mt-8">ID: @mehrshaw</p>
             </div>
+            
+            <!-- WeChat QR Codes -->
+            <div class="mt-16 flex flex-col md:flex-row items-center justify-center gap-10">
+                <div class="text-center">
+                    <img src="../MehrshadRokni.jpg" alt="WeChat QR Code for Mehrshad Rokni" class="w-40 h-40 rounded-lg border-2 border-amber-500/30 p-1">
+                    <p class="mt-3 text-lg text-amber-400">مهرشاد رکنی</p>
+                </div>
+                <div class="text-center">
+                    <img src="../HamidMahmoudi.jpg" alt="WeChat QR Code for Hamid Mahmoudi" class="w-40 h-40 rounded-lg border-2 border-amber-500/30 p-1">
+                    <p class="mt-3 text-lg text-amber-400">حمید محمودی</p>
+                </div>
+            </div>
+
+            <p class="text-xs text-stone-600 mt-16 text-center max-w-3xl mx-auto">
+                کلیه حقوق مادی و معنوی تصاویر استفاده شده در این صفحه متعلق به دانشجویان بوده و هرگونه کپی‌برداری یا استفاده بدون مجوز، پیگرد قانونی خواهد داشت.
+            </p>
         </section>
 
     </main>
+    
+    <!-- Image Modal -->
+    <div id="image-modal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modal-image">
+        <a class="modal-prev">&#10094;</a>
+        <a class="modal-next">&#10095;</a>
+        <div id="caption"></div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const caseGalleries = document.querySelectorAll('[data-case-id]');
-            caseGalleries.forEach(gallery => {
-                try {
-                    const images = JSON.parse(gallery.dataset.images);
-                    const mainImage = gallery.querySelector('.main-image');
-                    const thumbnailContainer = gallery.querySelector('.thumbnail-container');
-                    if (images.length > 1 && mainImage && thumbnailContainer) {
-                        images.forEach((src, index) => {
-                            const thumb = document.createElement('img');
-                            thumb.src = src;
-                            thumb.alt = `تصویر نمونه ${index + 1}`;
-                            thumb.classList.add('thumbnail', 'w-12', 'h-auto', 'object-cover', 'sm:w-16');
-                            if (index === 0) thumb.classList.add('active');
-                            thumb.addEventListener('click', () => {
-                                mainImage.style.opacity = '0';
-                                setTimeout(() => {
-                                    mainImage.src = src;
-                                    mainImage.style.opacity = '1';
-                                }, 150);
-                                thumbnailContainer.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-                                thumb.classList.add('active');
-                            });
-                            thumbnailContainer.appendChild(thumb);
-                        });
-                    } else if (thumbnailContainer) {
-                        thumbnailContainer.remove();
+            const galleryTrigger = document.querySelector('[data-case-id="dalian"]');
+            if (!galleryTrigger) return;
+
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            const captionText = document.getElementById('caption');
+            const closeBtn = document.querySelector('.modal-close');
+            const prevBtn = document.querySelector('.modal-prev');
+            const nextBtn = document.querySelector('.modal-next');
+            
+            const images = JSON.parse(galleryTrigger.dataset.images);
+            let currentImageIndex = 0;
+
+            const openModal = (index) => {
+                currentImageIndex = index;
+                modal.style.display = 'block';
+                updateModalImage();
+            };
+            
+            const closeModal = () => {
+                modal.style.display = 'none';
+            };
+
+            const updateModalImage = () => {
+                modalImg.src = images[currentImageIndex];
+                captionText.innerHTML = `${currentImageIndex + 1} / ${images.length}`;
+            };
+            
+            const showNextImage = () => {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updateModalImage();
+            };
+
+            const showPrevImage = () => {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                updateModalImage();
+            };
+
+            galleryTrigger.querySelector('.main-image-gallery').addEventListener('click', () => openModal(0));
+            closeBtn.addEventListener('click', closeModal);
+            nextBtn.addEventListener('click', showNextImage);
+            prevBtn.addEventListener('click', showPrevImage);
+            
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+            
+             document.addEventListener('keydown', function(event) {
+                if(modal.style.display === "block"){
+                    if (event.key === "ArrowRight") {
+                        showNextImage();
+                    } else if (event.key === "ArrowLeft") {
+                        showPrevImage();
+                    } else if (event.key === "Escape") {
+                        closeModal();
                     }
-                } catch(e) {
-                    const thumbnailContainer = gallery.querySelector('.thumbnail-container');
-                    if(thumbnailContainer) thumbnailContainer.remove();
                 }
             });
         });
