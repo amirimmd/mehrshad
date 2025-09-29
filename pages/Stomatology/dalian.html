@@ -21,12 +21,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
             overflow-x: hidden;
             background-color: #020617; /* Dark blue background */
+        }
+        body.en {
+            font-family: 'Roboto', sans-serif;
         }
         .glass-effect {
             background: rgba(15, 23, 42, 0.6);
@@ -94,17 +99,36 @@
         .realistic-icon {
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
+        
+        /* Language Switcher */
+        #lang-switcher {
+            position: fixed;
+            top: 1.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+        }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-200">
 
+    <!-- Language Switcher -->
+    <div id="lang-switcher" class="glass-effect p-1.5 rounded-full flex items-center space-x-1 animate-on-load">
+        <button id="lang-fa" class="p-1.5 rounded-full transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 36 36"><path fill="#C4161C" d="M32 5H4a4 4 0 00-4 4v2.4h36V9a4 4 0 00-4-4z"/><path fill="#C4161C" d="M36 27.6H0V27a4 4 0 014-4h28a4 4 0 014 4v.6z"/><path fill="#FFF" d="M0 11.4h36v13.2H0z"/><path fill="#509E2F" d="M21 16.5a3 3 0 11-6 0c0-1.655 2.99-5.918 3-6 .01.082 3 4.345 3 6z"/></svg>
+        </button>
+        <button id="lang-en" class="p-1.5 rounded-full transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 512 512"><path fill="#012169" d="M512 0H0v512h512z"/><path fill="#fff" d="M512 0L0 512zm0 512L0 0z" stroke="#fff" stroke-width="60"/><path fill="#C8102E" d="M512 0L0 512zm0 512L0 0z" stroke="#C8102E" stroke-width="40"/><path fill="#fff" d="M216 0h80v512h-80zm296 216v80H0v-80z"/><path fill="#C8102E"d="M216 0h80v512h-80zm296 216v80H0v-80z"/></svg>
+        </button>
+    </div>
+
     <!-- Floating Navigation Buttons -->
-    <a href="../../services.html" title="بازگشت به لیست دانشگاه‌ها" class="fixed top-5 left-5 z-50 glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load">
+    <a href="../../services.html" title="بازگشت به لیست دانشگاه‌ها" class="fixed top-5 left-5 z-40 glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
             <path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path>
         </svg>
     </a>
-     <a href="../../index.html" title="بازگشت به صفحه اصلی" class="fixed top-5 right-5 z-50 glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load">
+     <a href="../../index.html" title="بازگشت به صفحه اصلی" class="fixed top-5 right-5 z-40 glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
     </a>
 
@@ -113,33 +137,33 @@
         <div class="relative">
             <!-- Cover Photo -->
             <div class="h-48 sm:h-64 md:h-80 bg-slate-800 rounded-b-2xl overflow-hidden">
-                 <img src="../../images/universities/dalian-medical/01.webp" alt="کاور دانشگاه دالیان" class="w-full h-full object-cover">
+                 <img src="../../images/universities/dalian-medical/01.webp" alt="Cover of Dalian University" class="w-full h-full object-cover">
             </div>
             <!-- Logo -->
             <div class="absolute right-8 sm:right-12 -bottom-12 sm:-bottom-16">
-                 <img src="../../images/logo/dalian.png" alt="لوگوی دانشگاه دالیان" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 sm:border-8 border-slate-900 bg-slate-800">
+                 <img src="../../images/logo/dalian.png" alt="Dalian University Logo" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 sm:border-8 border-slate-900 bg-slate-800">
             </div>
         </div>
         <!-- University Name & Info -->
         <div class="pt-16 sm:pt-20 px-4 flex flex-col sm:flex-row justify-between items-start gap-4">
                <div class="text-right">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent tracking-tight">دانشگاه دندان‌پزشکی دالیان</h1>
-                <p class="mt-2 text-lg sm:text-xl text-cyan-400">Dalian Medical University (School of Stomatology)</p>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent tracking-tight" data-lang-fa="دانشگاه دندان‌پزشکی دالیان" data-lang-en="Dalian Medical University">دانشگاه دندان‌پزشکی دالیان</h1>
+                <p class="mt-2 text-lg sm:text-xl text-cyan-400" data-lang-fa="دانشکده دندانپزشکی" data-lang-en="School of Stomatology">School of Stomatology</p>
                </div>
                <!-- Gallery and Maps Link -->
                <div class="flex items-center gap-4">
                     <div class="flex flex-col items-center text-center">
-                         <a href="https://www.google.com/maps/place/Dalian+Medical+University/@38.807693,121.31464,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgID4hJ6b1gE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAC9h4nrOMm_7U6-8Mt1KjqHJogd7sSj3rOSosNIYjwuobeMRxj-dTQSJeKqukKgMWDKaFiJLbU_CiE1wRtHNhm94chu2Ai4tsZRV61YZ3-Le3nr8XhIUvXOvCHYYdsQPAnv8Sij9jrwrsA%3Dw152-h86-k-no!7i5312!8i2988!4m7!3m6!1s0x358f7398b6368f43:0x99f1f85f21ac8ea4!8m2!3d38.807693!4d121.31464!10e5!16zL20vMDNweDRu?entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" title="تصاویر دانشگاه در گوگل مپ" class="glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load delay-400">
+                         <a href="https://www.google.com/maps/place/Dalian+Medical+University/@38.807693,121.31464,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgID4hJ6b1gE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAC9h4nrOMm_7U6-8Mt1KjqHJogd7sSj3rOSosNIYjwuobeMRxj-dTQSJeKqukKgMWDKaFiJLbU_CiE1wRtHNhm94chu2Ai4tsZRV61YZ3-Le3nr8XhIUvXOvCHYYdsQPAnv8Sij9jrwrsA%3Dw152-h86-k-no!7i5312!8i2988!4m7!3m6!1s0x358f7398b6368f43:0x99f1f85f21ac8ea4!8m2!3d38.807693!4d121.31464!10e5!16zL20vMDNweDRu?entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" title="University Photos on Google Maps" class="glass-effect p-3 rounded-full hover:bg-slate-700/80 transition-all duration-300 animate-on-load delay-400">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg>
                         </a>
-                        <span class="text-xs text-slate-400 mt-1">تصاویر گوگل مپ</span>
+                        <span class="text-xs text-slate-400 mt-1" data-lang-fa="تصاویر گوگل مپ" data-lang-en="Google Maps Photos">تصاویر گوگل مپ</span>
                     </div>
                     <div id="gallery-preview" class="relative flex-shrink-0 w-40 h-24 sm:w-48 sm:h-28 group cursor-pointer animate-on-load delay-300">
-                        <img src="../../images/universities/dalian-medical/03.webp" alt="تصویر ۳ از دانشگاه دالیان" class="absolute top-0 right-0 w-3/4 h-full rounded-lg object-cover transition-transform duration-300 ease-in-out group-hover:translate-x-2 group-hover:-translate-y-2 group-hover:rotate-3 shadow-lg">
-                        <img src="../../images/universities/dalian-medical/02.webp" alt="تصویر ۲ از دانشگاه دالیان" class="absolute top-0 right-0 w-3/4 h-full rounded-lg object-cover transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:-rotate-2 shadow-lg">
-                        <img src="../../images/universities/dalian-medical/04.webp" alt="تصویر ۴ از دانشگاه دالیان" class="absolute top-0 right-0 w-3/4 h-full rounded-lg object-cover transition-transform duration-300 ease-in-out group-hover:-translate-x-2 group-hover:translate-y-2 group-hover:rotate-3 shadow-lg border-2 border-slate-600">
+                        <img src="../../images/universities/dalian-medical/03.webp" alt="Image 3 of Dalian University" class="absolute top-0 right-0 w-3/4 h-full rounded-lg object-cover transition-transform duration-300 ease-in-out group-hover:translate-x-2 group-hover:-translate-y-2 group-hover:rotate-3 shadow-lg">
+                        <img src="../../images/universities/dalian-medical/02.webp" alt="Image 2 of Dalian University" class="absolute top-0 right-0 w-3/4 h-full rounded-lg object-cover transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:-rotate-2 shadow-lg">
+                        <img src="../../images/universities/dalian-medical/04.webp" alt="Image 4 of Dalian University" class="absolute top-0 right-0 w-3/4 h-full rounded-lg object-cover transition-transform duration-300 ease-in-out group-hover:-translate-x-2 group-hover:translate-y-2 group-hover:rotate-3 shadow-lg border-2 border-slate-600">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors rounded-lg flex items-center justify-center">
-                            <p class="text-white font-semibold text-sm">مشاهده گالری</p>
+                            <p class="text-white font-semibold text-sm" data-lang-fa="مشاهده گالری" data-lang-en="View Gallery">مشاهده گالری</p>
                         </div>
                     </div>
                 </div>
@@ -148,16 +172,16 @@
 
     <!-- Hidden images for lightbox data source -->
     <div id="image-gallery" class="hidden">
-        <img src="../../images/universities/dalian-medical/01.webp" alt="تصویر ۱ از دانشگاه دالیان">
-        <img src="../../images/universities/dalian-medical/02.webp" alt="تصویر ۲ از دانشگاه دالیان">
-        <img src="../../images/universities/dalian-medical/03.webp" alt="تصویر ۳ از دانشگاه دالیان">
-        <img src="../../images/universities/dalian-medical/04.webp" alt="تصویر ۴ از دانشگاه دالیان">
-        <img src="../../images/universities/dalian-medical/05.webp" alt="تصویر ۵ از دانشگاه دالیان">
-        <img src="../../images/universities/dalian-medical/06.webp" alt="تصویر ۶ از دانشگاه دالیان">
-        <img src="../../images/universities/dalian-medical/07.webp" alt="تصویر ۷ از دانشگاه دالیان">
-        <img src="../../images/universities/dalian-medical/08.webp" alt="تصویر ۸ از دانشگاه دالیان">
-        <img src="../../images/universities/dalian-medical/09.webp" alt="تصویر ۹ از دانشگاه دالیان">
-        <img src="../../images/universities/dalian-medical/10.webp" alt="تصویر ۱۰ از دانشگاه دالیان">
+        <img src="../../images/universities/dalian-medical/01.webp" alt="Image 1 of Dalian University">
+        <img src="../../images/universities/dalian-medical/02.webp" alt="Image 2 of Dalian University">
+        <img src="../../images/universities/dalian-medical/03.webp" alt="Image 3 of Dalian University">
+        <img src="../../images/universities/dalian-medical/04.webp" alt="Image 4 of Dalian University">
+        <img src="../../images/universities/dalian-medical/05.webp" alt="Image 5 of Dalian University">
+        <img src="../../images/universities/dalian-medical/06.webp" alt="Image 6 of Dalian University">
+        <img src="../../images/universities/dalian-medical/07.webp" alt="Image 7 of Dalian University">
+        <img src="../../images/universities/dalian-medical/08.webp" alt="Image 8 of Dalian University">
+        <img src="../../images/universities/dalian-medical/09.webp" alt="Image 9 of Dalian University">
+        <img src="../../images/universities/dalian-medical/10.webp" alt="Image 10 of Dalian University">
     </div>
 
 
@@ -169,19 +193,19 @@
             <section class="animate-on-load delay-300">
                 <div class="glass-card border-l-4 rounded-xl p-4 md:p-5 flex items-center gap-4 animate-pulse-border">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-400 flex-shrink-0 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
-                    <p class="text-slate-300 font-medium">برای افزایش شانس پذیرش، توصیه می‌شود حداقل یک ماه پیش از شروع ترم اقدام کنید.</p>
+                    <p class="text-slate-300 font-medium" data-lang-fa="برای افزایش شانس پذیرش، توصیه می‌شود حداقل یک ماه پیش از شروع ترم اقدام کنید." data-lang-en="To increase your chances of admission, it is recommended to apply at least one month before the semester begins.">برای افزایش شانس پذیرش، توصیه می‌شود حداقل یک ماه پیش از شروع ترم اقدام کنید.</p>
                 </div>
             </section>
             
             <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-500 shadow-2xl">
-                 <h2 class="text-2xl font-bold text-cyan-300 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>معرفی دوره دندانپزشکی</h2>
-                <p class="text-slate-300 leading-relaxed">
+                 <h2 class="text-2xl font-bold text-cyan-300 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg><span data-lang-fa="معرفی دوره دندانپزشکی" data-lang-en="Introduction to Dentistry Program">معرفی دوره دندانپزشکی</span></h2>
+                <p class="text-slate-300 leading-relaxed" data-lang-fa="دانشگاه پزشکی دالیان یکی از بهترین گزینه‌ها برای تحصیل در رشته دندانپزشکی به زبان انگلیسی در چین است. این دوره با تمرکز بر استانداردهای بین‌المللی، دانشجویان را برای ورود به بازار کار جهانی آماده می‌کند. در ادامه، جزئیات کامل شرایط، مدارک و هزینه‌های مربوط به این دوره ارائه شده است." data-lang-en="Dalian Medical University is one of the best options for studying dentistry in English in China. This program focuses on international standards, preparing students for the global job market. Below are the complete details regarding conditions, required documents, and costs.">
                     دانشگاه پزشکی دالیان یکی از بهترین گزینه‌ها برای تحصیل در رشته دندانپزشکی به زبان انگلیسی در چین است. این دوره با تمرکز بر استانداردهای بین‌المللی، دانشجویان را برای ورود به بازار کار جهانی آماده می‌کند. در ادامه، جزئیات کامل شرایط، مدارک و هزینه‌های مربوط به این دوره ارائه شده است.
                 </p>
                 <div class="mt-6 text-center">
                     <a href="https://www.google.com/maps/search/?api=1&query=Dalian+Medical+University" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full glass-effect px-5 py-2 text-sm sm:px-6 sm:py-3 sm:text-base text-white/90 hover:text-white shadow-lg transition-transform hover:scale-105">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                        مشاهده موقعیت دانشگاه روی نقشه
+                        <span data-lang-fa="مشاهده موقعیت دانشگاه روی نقشه" data-lang-en="View University Location on Map">مشاهده موقعیت دانشگاه روی نقشه</span>
                     </a>
                 </div>
             </section>
@@ -189,37 +213,37 @@
             <!-- Details & Requirements Section -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-600">
-                    <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM16 18H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>مدارک مورد نیاز</h2>
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM16 18H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><span data-lang-fa="مدارک مورد نیاز" data-lang-en="Required Documents">مدارک مورد نیاز</span></h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-slate-300">
-                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>ریزنمرات ۳ سال آخر دبیرستان</span></div>
-                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>مدرک دیپلم (تجربی، انسانی یا ریاضی)</span></div>
-                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>نامه عدم سوء پیشینه</span></div>
-                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>اسکن تمام صفحات پاسپورت</span></div>
-                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>عکس پرسنلی با زمینه سفید</span></div>
-                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>فرم پزشکی تایید سلامت (مهر شده)</span></div>
-                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>تمکن مالی (در صورت نیاز، موسسه کمک خواهد کرد)</span></div>
-                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>نوتارایز (Notarize) سفارت چین</span></div>
+                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span data-lang-fa="ریزنمرات ۳ سال آخر دبیرستان" data-lang-en="Transcripts for the last 3 years of high school">ریزنمرات ۳ سال آخر دبیرستان</span></div>
+                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span data-lang-fa="مدرک دیپلم (تجربی، انسانی یا ریاضی)" data-lang-en="High School Diploma (Science, Humanities, or Math)">مدرک دیپلم</span></div>
+                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span data-lang-fa="نامه عدم سوء پیشینه" data-lang-en="No Criminal Record Certificate">نامه عدم سوء پیشینه</span></div>
+                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span data-lang-fa="اسکن تمام صفحات پاسپورت" data-lang-en="Scan of all passport pages">اسکن تمام صفحات پاسپورت</span></div>
+                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span data-lang-fa="عکس پرسنلی با زمینه سفید" data-lang-en="Personal photo with a white background">عکس پرسنلی با زمینه سفید</span></div>
+                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span data-lang-fa="فرم پزشکی تایید سلامت (مهر شده)" data-lang-en="Stamped Medical Health Form">فرم پزشکی تایید سلامت (مهر شده)</span></div>
+                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span data-lang-fa="تمکن مالی (در صورت نیاز، موسسه کمک خواهد کرد)" data-lang-en="Financial statement (agency can assist if needed)">تمکن مالی</span></div>
+                        <div class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span data-lang-fa="نوتارایز (Notarize) سفارت چین" data-lang-en="Notarization by the Chinese Embassy">نوتارایز سفارت چین</span></div>
                     </div>
                     <p class="text-xs text-slate-400 mt-6 pt-4 border-t border-slate-700">
-                        <strong>خدمات تکمیلی:</strong> ترجمه رسمی کلیه مدارک با مهر دادگستری، امور خارجه و آموزش و پرورش توسط موسسه با هزینه جداگانه انجام می‌شود.
+                        <strong data-lang-fa="خدمات تکمیلی:" data-lang-en="Additional Services:">خدمات تکمیلی:</strong> <span data-lang-fa="ترجمه رسمی کلیه مدارک با مهر دادگستری، امور خارجه و آموزش و پرورش توسط موسسه با هزینه جداگانه انجام می‌شود." data-lang-en="Official translation of all documents by the agency is available for an extra fee.">ترجمه رسمی کلیه مدارک با مهر دادگستری، امور خارجه و آموزش و پرورش توسط موسسه با هزینه جداگانه انجام می‌شود.</span>
                     </p>
                 </section>
                 <div class="space-y-8">
                      <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-800">
-                        <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>مشخصات و هزینه‌ها</h2>
+                        <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg><span data-lang-fa="مشخصات و هزینه‌ها" data-lang-en="Specifications & Costs">مشخصات و هزینه‌ها</span></h2>
                         <ul class="space-y-4 text-slate-300 border-b border-slate-700 pb-4">
-                            <li class="flex justify-between items-center"><span>شهریه سالانه:</span><strong class="text-white font-semibold">~</strong></li>
-                            <li class="flex justify-between items-center"><span>خوابگاه (سالیانه):</span><strong class="text-white font-semibold">~</strong></li>
-                            <li class="flex justify-between items-center"><span>بیمه درمانی:</span><strong class="text-white font-semibold">~</strong></li>
-                            <li class="flex justify-between items-center"><span>مدت زمان دوره:</span><strong class="text-white font-semibold">۵ سال</strong></li>
+                            <li class="flex justify-between items-center"><span data-lang-fa="شهریه سالانه:" data-lang-en="Annual Tuition:">شهریه سالانه:</span><strong class="text-white font-semibold">~</strong></li>
+                            <li class="flex justify-between items-center"><span data-lang-fa="خوابگاه (سالیانه):" data-lang-en="Dormitory (Annual):">خوابگاه (سالیانه):</span><strong class="text-white font-semibold">~</strong></li>
+                            <li class="flex justify-between items-center"><span data-lang-fa="بیمه درمانی:" data-lang-en="Health Insurance:">بیمه درمانی:</span><strong class="text-white font-semibold">~</strong></li>
+                            <li class="flex justify-between items-center"><span data-lang-fa="مدت زمان دوره:" data-lang-en="Program Duration:">مدت زمان دوره:</span><strong class="text-white font-semibold" data-lang-fa="۵ سال" data-lang-en="5 Years">۵ سال</strong></li>
                         </ul>
                         <ul class="space-y-4 text-slate-300 pt-4">
-                             <li class="flex justify-between items-center"><span>اپلیکیشن فی:</span><strong class="text-white font-semibold">$۲۵۰</strong></li>
-                            <li class="flex justify-between items-center"><span>پیش‌پرداخت:</span><strong class="text-white font-semibold">$۳۰۰ - $۵۰۰</strong></li>
-                            <li class="flex justify-between items-center"><span>هزینه کل پرونده:</span><strong class="text-white font-semibold">$۱۵۰۰ - $۲۰۰۰</strong></li>
+                             <li class="flex justify-between items-center"><span data-lang-fa="اپلیکیشن فی:" data-lang-en="Application Fee:">اپلیکیشن فی:</span><strong class="text-white font-semibold">$۲۵۰</strong></li>
+                            <li class="flex justify-between items-center"><span data-lang-fa="پیش‌پرداخت:" data-lang-en="Pre-payment:">پیش‌پرداخت:</span><strong class="text-white font-semibold">$۳۰۰ - $۵۰۰</strong></li>
+                            <li class="flex justify-between items-center"><span data-lang-fa="هزینه کل پرونده:" data-lang-en="Total Case Fee:">هزینه کل پرونده:</span><strong class="text-white font-semibold">$۱۵۰۰ - $۲۰۰۰</strong></li>
                         </ul>
                          <p class="text-xs text-slate-400 mt-6 pt-4 border-t border-slate-700">
-                            <strong>نکته:</strong> در صورت کنسلی از سمت موسسه، کلیه هزینه‌های دریافتی برگشت داده خواهد شد.
+                            <strong data-lang-fa="نکته:" data-lang-en="Note:">نکته:</strong> <span data-lang-fa="در صورت کنسلی از سمت موسسه، کلیه هزینه‌های دریافتی برگشت داده خواهد شد." data-lang-en="In case of cancellation by the agency, all fees will be refunded.">در صورت کنسلی از سمت موسسه، کلیه هزینه‌های دریافتی برگشت داده خواهد شد.</span>
                         </p>
                     </section>
                 </div>
@@ -227,17 +251,17 @@
 
              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-700 overflow-hidden">
-                    <h2 class="text-2xl font-bold text-cyan-300 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>آب و هوای دالیان</h2>
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-4 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg><span data-lang-fa="آب و هوای دالیان" data-lang-en="Weather in Dalian">آب و هوای دالیان</span></h2>
                     <div id="weather-widget" class="flex flex-col items-center justify-center text-center mt-4 min-h-[160px]">
-                        <div class="text-slate-300">در حال بارگذاری...</div>
+                        <div class="text-slate-300" data-lang-fa="در حال بارگذاری..." data-lang-en="Loading...">در حال بارگذاری...</div>
                     </div>
                 </section>
                 <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-900">
-                    <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>شرایط پذیرش</h2>
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg><span data-lang-fa="شرایط پذیرش" data-lang-en="Admission Requirements">شرایط پذیرش</span></h2>
                     <ul class="space-y-3 text-slate-300">
-                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>معدل کل دیپلم بالای ۱۸</span></li>
-                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>متولدین سال ۲۰۰۱ به بعد</span></li>
-                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span>عدم وجود دروس تجدیدی یا نمره زیر ۱۰</span></li>
+                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span data-lang-fa="معدل کل دیپلم بالای ۱۸" data-lang-en="Overall high school GPA above 18">معدل کل دیپلم بالای ۱۸</span></li>
+                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span data-lang-fa="متولدین سال ۲۰۰۱ به بعد" data-lang-en="Born in 2001 or later">متولدین سال ۲۰۰۱ به بعد</span></li>
+                        <li class="flex items-start"><span class="ml-3 mt-1.5 text-cyan-400 text-xs">&#9679;</span><span data-lang-fa="عدم وجود دروس تجدیدی یا نمره زیر ۱۰" data-lang-en="No failed courses or grades below 10">عدم وجود دروس تجدیدی یا نمره زیر ۱۰</span></li>
                     </ul>
                 </section>
              </div>
@@ -246,24 +270,24 @@
             <section class="glass-card rounded-2xl p-6 md:p-8 animate-on-load delay-800 shadow-2xl">
                 <h2 class="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-3">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 realistic-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-1.17 1.65L9.35 6.35C8.79 5.54 7.88 5 6.83 5c-1.66 0-3 1.34-3 3 0 .35.07.69.18 1H2v2h2.18c-.11.31-.18.65-.18 1 0 1.66 1.34 3 3 3 1.05 0 1.96-.54 2.5-1.35l-1.17-1.65 1.15 1.65c.56.81 1.47 1.35 2.52 1.35 1.66 0 3-1.34 3-3 0-.35-.07-.69-.18-1H22V6zm-4-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6.83 7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm0 6c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm10.34 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
-                    آب و هوا در چهار فصل
+                    <span data-lang-fa="آب و هوا در چهار فصل" data-lang-en="Weather in Four Seasons">آب و هوا در چهار فصل</span>
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-slate-300">
                     <div class="text-center sm:text-right">
-                        <h3 class="font-semibold text-white mb-2">بهار (مارچ - می)</h3>
-                        <p class="text-sm leading-relaxed text-slate-400">هوایی معتدل و دلپذیر اما نسبتاً پر باد. بهترین زمان برای لذت بردن از شکوفه‌ها و طبیعت بیدار شده شهر.</p>
+                        <h3 class="font-semibold text-white mb-2" data-lang-fa="بهار (مارچ - می)" data-lang-en="Spring (March - May)">بهار (مارچ - می)</h3>
+                        <p class="text-sm leading-relaxed text-slate-400" data-lang-fa="هوایی معتدل و دلپذیر اما نسبتاً پر باد. بهترین زمان برای لذت بردن از شکوفه‌ها و طبیعت بیدار شده شهر." data-lang-en="Mild and pleasant but relatively windy. The best time to enjoy the blossoms and the city's awakening nature.">هوایی معتدل و دلپذیر اما نسبتاً پر باد. بهترین زمان برای لذت بردن از شکوفه‌ها و طبیعت بیدار شده شهر.</p>
                     </div>
                     <div class="text-center sm:text-right">
-                        <h3 class="font-semibold text-white mb-2">تابستان (ژوئن - آگوست)</h3>
-                        <p class="text-sm leading-relaxed text-slate-400">گرم و مرطوب، اما به لطف نسیم دریا، از گرمای طاقت‌فرسا خبری نیست. فصل اوج گردشگری و فعالیت‌های ساحلی.</p>
+                        <h3 class="font-semibold text-white mb-2" data-lang-fa="تابستان (ژوئن - آگوست)" data-lang-en="Summer (June - August)">تابستان (ژوئن - آگوست)</h3>
+                        <p class="text-sm leading-relaxed text-slate-400" data-lang-fa="گرم و مرطوب، اما به لطف نسیم دریا، از گرمای طاقت‌فرسا خبری نیست. فصل اوج گردشگری و فعالیت‌های ساحلی." data-lang-en="Warm and humid, but the sea breeze prevents extreme heat. Peak season for tourism and beach activities.">گرم و مرطوب، اما به لطف نسیم دریا، از گرمای طاقت‌فرسا خبری نیست. فصل اوج گردشگری و فعالیت‌های ساحلی.</p>
                     </div>
                      <div class="text-center sm:text-right">
-                        <h3 class="font-semibold text-white mb-2">پاییز (سپتامبر - نوامبر)</h3>
-                        <p class="text-sm leading-relaxed text-slate-400">خنک، خشک با آسمانی صاف و آبی. از نظر بسیاری، زیباترین و بهترین فصل برای اقامت در دالیان است.</p>
+                        <h3 class="font-semibold text-white mb-2" data-lang-fa="پاییز (سپتامبر - نوامبر)" data-lang-en="Autumn (September - November)">پاییز (سپتامبر - نوامبر)</h3>
+                        <p class="text-sm leading-relaxed text-slate-400" data-lang-fa="خنک، خشک با آسمانی صاف و آبی. از نظر بسیاری، زیباترین و بهترین فصل برای اقامت در دالیان است." data-lang-en="Cool and dry with clear blue skies. Considered by many to be the most beautiful and best season to stay in Dalian.">خنک، خشک با آسمانی صاف و آبی. از نظر بسیاری، زیباترین و بهترین فصل برای اقامت در دالیان است.</p>
                     </div>
                      <div class="text-center sm:text-right">
-                        <h3 class="font-semibold text-white mb-2">زمستان (دسامبر - فوریه)</h3>
-                        <p class="text-sm leading-relaxed text-slate-400">سرد و خشک. بارش برف ممکن است اتفاق بیفتد اما معمولاً سنگین نیست. فرصتی برای تجربه زمستان ساحلی.</p>
+                        <h3 class="font-semibold text-white mb-2" data-lang-fa="زمستان (دسامبر - فوریه)" data-lang-en="Winter (December - February)">زمستان (دسامبر - فوریه)</h3>
+                        <p class="text-sm leading-relaxed text-slate-400" data-lang-fa="سرد و خشک. بارش برف ممکن است اتفاق بیفتد اما معمولاً سنگین نیست. فرصتی برای تجربه زمستان ساحلی." data-lang-en="Cold and dry. Snowfall may occur but is usually not heavy. An opportunity to experience a coastal winter.">سرد و خشک. بارش برف ممکن است اتفاق بیفتد اما معمولاً سنگین نیست. فرصتی برای تجربه زمستان ساحلی.</p>
                     </div>
                 </div>
             </section>
@@ -276,42 +300,42 @@
                 <div class="flex flex-col items-center md:items-start text-center md:text-right">
                     <a href="../../index.html" class="flex items-center gap-2">
                         <img class="h-10 w-auto" src="../../images/3232.png" alt="Logo">
-                        <span class="text-xl font-bold text-white">موسسه مهاجرتی <span style="background-image: linear-gradient(to left, #10b981, #ffffff, #ef4444); -webkit-background-clip: text; background-clip: text; color: transparent;">میدچین</span></span>
+                        <span class="text-xl font-bold text-white"><span data-lang-fa="موسسه مهاجرتی" data-lang-en="Immigration Agency">موسسه مهاجرتی</span> <span style="background-image: linear-gradient(to left, #10b981, #ffffff, #ef4444); -webkit-background-clip: text; background-clip: text; color: transparent;" data-lang-fa="میدچین" data-lang-en="MidChina">میدچین</span></span>
                     </a>
-                    <p class="mt-4 text-sm text-slate-400">
+                    <p class="mt-4 text-sm text-slate-400" data-lang-fa="راهنمای شما برای تحصیل در بهترین دانشگاه‌های چین. ما با تجربه و دانش خود، مسیر پذیرش و مهاجرت تحصیلی را برای شما هموار می‌کنیم." data-lang-en="Your guide to studying at the best universities in China. We smooth the path of admission and educational immigration for you with our experience and knowledge.">
                         راهنمای شما برای تحصیل در بهترین دانشگاه‌های چین. ما با تجربه و دانش خود، مسیر پذیرش و مهاجرت تحصیلی را برای شما هموار می‌کنیم.
                     </p>
                 </div>
 
                 <div class="flex flex-col items-center md:items-start text-center md:text-right">
-                    <h3 class="font-bold text-white tracking-widest uppercase">دسترسی سریع</h3>
+                    <h3 class="font-bold text-white tracking-widest uppercase" data-lang-fa="دسترسی سریع" data-lang-en="Quick Access">دسترسی سریع</h3>
                     <div class="mt-4 flex flex-col items-center md:items-start space-y-2">
-                        <a href="../../services.html" class="text-slate-400 hover:text-cyan-400 transition-colors">دانشگاه‌ها</a>
-                        <a href="../../pages/successful-cases.html" class="text-slate-400 hover:text-cyan-400 transition-colors">پرونده‌های موفق</a>
-                        <a href="../../pages/about.html" class="text-slate-400 hover:text-cyan-400 transition-colors">درباره ما</a>
+                        <a href="../../services.html" class="text-slate-400 hover:text-cyan-400 transition-colors" data-lang-fa="دانشگاه‌ها" data-lang-en="Universities">دانشگاه‌ها</a>
+                        <a href="../../pages/successful-cases.html" class="text-slate-400 hover:text-cyan-400 transition-colors" data-lang-fa="پرونده‌های موفق" data-lang-en="Successful Cases">پرونده‌های موفق</a>
+                        <a href="../../pages/about.html" class="text-slate-400 hover:text-cyan-400 transition-colors" data-lang-fa="درباره ما" data-lang-en="About Us">درباره ما</a>
                     </div>
                 </div>
                 
                 <div class="flex flex-col items-center md:items-start text-center md:text-right">
-                    <h3 class="font-bold text-white tracking-widest uppercase">ارتباط با ما</h3>
+                    <h3 class="font-bold text-white tracking-widest uppercase" data-lang-fa="ارتباط با ما" data-lang-en="Contact Us">ارتباط با ما</h3>
                     <div class="mt-4 flex flex-col items-center md:items-start space-y-3">
-                        <a href="tg://resolve?domain=mehrshaw" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors">
-                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
-                            <span>آیدی تلگرام</span>
+                        <a href="tg://resolve?domain=mehrshaw" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-slate-700/50 hover:bg-slate-700/80 px-4 py-2 rounded-lg transition-colors duration-300">
+                            <svg class="w-6 h-6 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+                            <span class="text-slate-200" data-lang-fa="آیدی تلگرام" data-lang-en="Telegram ID">آیدی تلگرام</span>
                         </a>
-                        <a href="https.t.me/mehrshad_cn" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors">
-                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
-                            <span>کانال تلگرام</span>
+                        <a href="https://t.me/mehrshad_cn" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-slate-700/50 hover:bg-slate-700/80 px-4 py-2 rounded-lg transition-colors duration-300">
+                            <svg class="w-6 h-6 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+                            <span class="text-slate-200" data-lang-fa="کانال تلگرام" data-lang-en="Telegram Channel">کانال تلگرام</span>
                         </a>
                     </div>
                     <div class="mt-6 flex gap-6">
                         <div class="text-center">
-                            <img src="https://placehold.co/100x100/ffffff/111827?text=WeChat" alt="WeChat QR Code" class="rounded-lg border border-slate-600 p-1">
-                            <p class="text-xs text-slate-400 mt-2">اسکن کنید (WeChat)</p>
+                            <img src="../../MehrshadRokni.jpg" alt="WeChat QR Code for Mehrshad Rokni" class="rounded-lg border border-slate-600 p-1 w-24 h-24 object-cover">
+                            <p class="text-xs text-slate-400 mt-2" data-lang-fa="اسکن کنید (WeChat)" data-lang-en="Scan (WeChat)">اسکن کنید (WeChat)</p>
                         </div>
                         <div class="text-center">
-                             <img src="https://placehold.co/100x100/ffffff/111827?text=WeChat" alt="WeChat QR Code" class="rounded-lg border border-slate-600 p-1">
-                            <p class="text-xs text-slate-400 mt-2">اسکن کنید (WeChat)</p>
+                             <img src="../../HamidMahmoudi.jpg" alt="WeChat QR Code for Hamid Mahmoudi" class="rounded-lg border border-slate-600 p-1 w-24 h-24 object-cover">
+                             <p class="text-xs text-slate-400 mt-2" data-lang-fa="اسکن کنید (WeChat)" data-lang-en="Scan (WeChat)">اسکن کنید (WeChat)</p>
                         </div>
                     </div>
                 </div>
@@ -320,7 +344,7 @@
             <hr class="my-6 border-slate-700">
 
             <div class="text-center text-slate-400">
-                <p>&copy; 2024 کلیه حقوق برای موسسه مهاجرتی میدچین محفوظ است.</p>
+                <p data-lang-fa="© 2024 کلیه حقوق برای موسسه مهاجرتی میدچین محفوظ است." data-lang-en="© 2024 All rights reserved for MidChina Immigration Agency.">© 2024 کلیه حقوق برای موسسه مهاجرتی میدچین محفوظ است.</p>
             </div>
         </div>
     </footer>
@@ -329,12 +353,50 @@
     <div id="lightbox" class="fixed inset-0 bg-black/90 z-[999] hidden items-center justify-center p-4 transition-opacity duration-300">
         <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white text-5xl opacity-80 hover:opacity-100">&times;</button>
         <button onclick="showPrevImage()" class="absolute left-2 sm:left-5 top-1/2 -translate-y-1.2 text-white text-5xl p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">&#8249;</button>
-        <img id="lightbox-img" src="" alt="تصویر بزرگ شده" class="max-w-[95vw] max-h-[95vh] object-contain cursor-zoom-in" onclick="toggleZoom(this)">
+        <img id="lightbox-img" src="" alt="Enlarged image" class="max-w-[95vw] max-h-[95vh] object-contain cursor-zoom-in" onclick="toggleZoom(this)">
         <button onclick="showNextImage()" class="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 text-white text-5xl p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">&#8250;</button>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // --- LANGUAGE SWITCHER ---
+            const langFaBtn = document.getElementById('lang-fa');
+            const langEnBtn = document.getElementById('lang-en');
+            const translatableElements = document.querySelectorAll('[data-lang-fa]');
+
+            function switchLanguage(lang) {
+                if (lang === 'en') {
+                    document.documentElement.lang = 'en';
+                    document.documentElement.dir = 'ltr';
+                    document.body.classList.add('en');
+                    langEnBtn.classList.add('bg-slate-700/80');
+                    langFaBtn.classList.remove('bg-slate-700/80');
+                } else {
+                    document.documentElement.lang = 'fa';
+                    document.documentElement.dir = 'rtl';
+                    document.body.classList.remove('en');
+                    langFaBtn.classList.add('bg-slate-700/80');
+                    langEnBtn.classList.remove('bg-slate-700/80');
+                }
+
+                translatableElements.forEach(el => {
+                    el.textContent = el.dataset[`lang${lang.charAt(0).toUpperCase() + lang.slice(1)}`];
+                });
+
+                localStorage.setItem('preferredLanguage', lang);
+                // Re-fetch weather to get descriptions in the selected language
+                fetchWeather();
+            }
+
+            langFaBtn.addEventListener('click', () => switchLanguage('fa'));
+            langEnBtn.addEventListener('click', () => switchLanguage('en'));
+            
+            // On load, check for saved language preference
+            const savedLang = localStorage.getItem('preferredLanguage') || 'fa';
+            switchLanguage(savedLang);
+
+
             // Lightbox functionality
             const galleryPreview = document.getElementById('gallery-preview');
             const images = Array.from(document.querySelectorAll('#image-gallery img'));
@@ -423,7 +485,8 @@
             const fetchWeather = async () => {
                 const apiKey = "df30fc7c6634e18343884eb4bdaf3e4a";
                 const city = "Dalian";
-                const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=fa`;
+                const lang = localStorage.getItem('preferredLanguage') || 'fa';
+                const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
                 const weatherWidget = document.getElementById('weather-widget');
 
                 try {
@@ -450,11 +513,11 @@
                              <div class="w-full flex justify-around text-center text-xs text-slate-400 mt-4 pt-4 border-t border-slate-700/50">
                                 <div>
                                     <div class="font-semibold text-white">${todayHumidity}%</div>
-                                    <div>رطوبت</div>
+                                    <div data-lang-fa="رطوبت" data-lang-en="Humidity">${lang === 'fa' ? 'رطوبت' : 'Humidity'}</div>
                                 </div>
                                 <div>
                                     <div class="font-semibold text-white">${todayWind} km/h</div>
-                                    <div>سرعت باد</div>
+                                    <div data-lang-fa="سرعت باد" data-lang-en="Wind Speed">${lang === 'fa' ? 'سرعت باد' : 'Wind Speed'}</div>
                                 </div>
                             </div>
                         </div>
@@ -472,7 +535,7 @@
                             if (daysAdded > 5) break;
 
                             const date = new Date(forecast.dt * 1000);
-                            const dayName = (daysAdded === 1) ? "امروز" : date.toLocaleDateString('fa-IR', { weekday: 'short' });
+                            const dayName = (daysAdded === 1) ? (lang === 'fa' ? 'امروز' : 'Today') : date.toLocaleDateString(lang === 'fa' ? 'fa-IR' : 'en-US', { weekday: 'short' });
                             const iconCode = forecast.weather[0].icon;
                             const temp = Math.round(forecast.main.temp);
                             const humidity = forecast.main.humidity;
@@ -488,16 +551,14 @@
                         }
                     }
                     forecastHtml += '</div></div>';
-
+                    
                     weatherWidget.innerHTML = todayHtml + forecastHtml;
 
                 } catch (error) {
                     console.error("Failed to fetch weather:", error);
-                    weatherWidget.innerHTML = `<div class="text-sm text-slate-400">اطلاعات آب و هوا در دسترس نیست</div>`;
+                    weatherWidget.innerHTML = `<div class="text-sm text-slate-400">${lang === 'fa' ? 'اطلاعات آب و هوا در دسترس نیست' : 'Weather information is not available'}</div>`;
                 }
             };
-
-            fetchWeather();
         });
     </script>
 
