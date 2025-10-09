@@ -143,7 +143,8 @@
                  <img src="../../images/logo/dalian.png" alt="Dalian University Logo" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 sm:border-8 border-slate-900 bg-slate-800">
             </div>
         </div>
-        <div class="pt-16 sm:pt-20 px-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+        <!-- MODIFICATION: Increased top padding to avoid title overlapping logo -->
+        <div class="pt-24 sm:pt-28 px-4 flex flex-col sm:flex-row justify-between items-start gap-4">
                <div class="align-right-in-rtl">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent tracking-tight" data-lang-fa="دانشگاه دندان‌پزشکی دالیان" data-lang-en="Dalian Medical University">دانشگاه دندان‌پزشکی دالیان</h1>
                 <p class="mt-2 text-lg sm:text-xl text-cyan-400" data-lang-fa="دانشکده دندانپزشکی" data-lang-en="School of Stomatology">School of Stomatology</p>
@@ -531,6 +532,23 @@
             });
         });
     </script>
+    
+    <!-- ADDITION: Lenis Smooth Scroll Library -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script>
+        // --- Smooth Scrolling with Lenis ---
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothTouch: true,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+    </script>
 </body>
 </html>
-
